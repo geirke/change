@@ -20,7 +20,14 @@ var category = {
 			'whenthen': []
 		}
 
-		storage.categoryList().push(category);
+		var list = storage.categoryList();
+		if (list[0] == "") {
+			list = [];
+		}
+
+		list.push(category);
+		storage.setCategoryList(list);
+	
 	},
 
 	get: function(category) {
@@ -91,20 +98,31 @@ var storage = {
 		if (category == null) {
 			return localStorage.getItem('category');
 		}
-		return localStorage.getItem('category')[category];
+		return JSON.parse(localStorage.getItem('category'))[category];
 	},
 	categoryList: function() {
-		return localStorage.getItem('catlist');
+		return localStorage.getItem('catlist').split(" ");
+	},
+	setItem: function(key, value) {
+		return localStorage.setItem(key, JSON.stringify(value));
+	},
+
+	getItem: function(key) {
+		return localStorage.getItem(key);
+	}
+
+	setCategoryList: function(list) {
+		localStorage.setItem('catlist', list);
 	}
 }
 
 
 function init_storage() {
-	if (localStorage.getItem('visited'))
-		return;
+//	if (localStorage.getItem('visited'))
+//		return;
 
 	localStorage.setItem('catlist', []);
-	localStorage.setItem('category', {});
+	localStorage.setItem('category', JSON.stringify({}));
 	localStorage.setItem('visited', true);
 
 	category.add('modig');
