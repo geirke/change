@@ -1,9 +1,16 @@
 $(function() {
-    $(document).bind("pagechange", function(event, obj) {
-    	$('div[data-role="page"]').on('swipe', function() {});
-    });
-    $('div[data-role="page"]').on('swipe', function() {});
+	initPage();
+    $(document).bind("pagechange", initPage);
 });
+
+function initPage() {
+	var $pages = $('div[data-role="page"]');
+	$pages.on('swipe', function() {});
+	$pages.each(function() {
+		$this = $(this);
+		$this.append('<div class="rightPanel"></div>');
+	});
+}
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
 	page = $.mobile.activePage[0];
