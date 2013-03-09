@@ -12,7 +12,7 @@ function init() {
 
 function init_storeage() {
 
-	// Category
+	var catlist = [ 'Modig', 'Kreativitet', 'Liker' ];
 	var category = {
 		'Modig' : {
 			'Poeng': 0,
@@ -34,6 +34,7 @@ function init_storeage() {
 	var whenthen = {
 	};
 
+	localStoreage.setItem('catlist', catlist);
 	localStoreage.setItem('category', category);
 	localStoreage.setItem('read', read);
 	localStoreage.setItem('whenthen', whenthen);
@@ -44,8 +45,8 @@ function init_storeage() {
 * Point functions
 */
 function addPoints(points) {
-	var currentCategory = sessionStoreage.get('category');
-	var cat = getCategory(currentCategory);
+	var currentStrength = sessionStoreage.get('category');
+	var cat = getStrength(currentStrength);
 
 	if (cat == null) {
 		return;
@@ -56,7 +57,7 @@ function addPoints(points) {
 
 function getPoints() {
 	var currentCategory = sessionStoreage.get('category');
-	var cat = getCategory(currentCategory);
+	var cat = getStrength(currentCategory);
 
 	if (cat == null) {
 		return -1;
@@ -76,12 +77,21 @@ function addStrength(cat) {
 		'Lest' : []
 	}
 
-	localStoreage.setItem('category', category);
+	var list = localStoreage.get('catlist');
+	list.push(cat);
 }
 
 function getStrength(cat) {
-	var category = localStoreage.get('category');
-	return category[cat];
+
+	if (typeof cat == 'string') {
+		var category = localStoreage.get('category');
+		return category[cat];
+	} else if (typeof cat == 'number') {
+		var category = localStoreage.get('catlist');
+		return category[cat];
+	} else if (cat == null) {
+		return localStoreage.get('catlist');
+	} 
 }
 
 /*
@@ -120,7 +130,7 @@ function getRead() {
 }
 
 /*
-*
+* SessionStoreage stuff
 */
 
 function setActiveCategory(cat) {
