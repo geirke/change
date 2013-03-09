@@ -44,9 +44,10 @@ var category = {
 	},
 	
 	addPoints: function(points) {
-		var category = storage.getCategory(session.getCategory());
+		var curCat = session.getCategory();
+		var category = storage.getCategory(curCat);
 		category.points += points;
-		storage.setCategory(category);
+		storage.setCategory(curCat, category);
 	},
 
 	getPoints: function(category) {
@@ -62,9 +63,9 @@ var category = {
 			category = session.getCategory();
 		}
 
-		category = storage.getCategory(category);
-		category['whenthen'].push({when: when, then: then});
-		storage.setCategory(category);
+		var gory = storage.getCategory(category);
+		gory['whenthen'].push({when: when, then: then});
+		storage.setCategory(category, gory);
 	},
 
 	getWhenThen: function(category) {
@@ -101,8 +102,10 @@ var storage = {
 		return JSON.parse(localStorage.getItem('category'))[category];
 	},
 
-	setCategory: function(category) {
-		return localStorage.setItem('')
+	setCategory: function(name, category) {
+		var gories = storage.getCategories();
+		gories[name] = category;
+		storage.setCategories(gories);
 	},
 
 	// Categories
@@ -138,4 +141,9 @@ function init_storage() {
 	category.add('modig');
 	category.add('lære');
 	category.add('kreativitet');
+
+	session.setCategory('modig');
+
+	category.addPoints(5);
+	category.addWhenThen('Skal ut på tur', 'Aldri sur');
 }
