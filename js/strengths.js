@@ -82,7 +82,7 @@ var initstrengths = function() {
         main.find('#about-header').html(strength.header);
         main.find('#about').html(strength.about);
 
-        $('div[data-role="header"]').each(function() {
+        $('div[data-role="header"] h1').each(function() {
             $(this).html(strength.name);
         });
 
