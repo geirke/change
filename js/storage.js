@@ -1,16 +1,16 @@
 /*
-* Wrapper for localStoreage
+* Wrapper for localStorage
 */
 function init() {
-	if (localStoreage.get('visited') == null) {
-		init_storeage();
+	if (localStorage.get('visited') == null) {
+		init_storage();
 		return false;
 	}
 
 	return true;
 }
 
-function init_storeage() {
+function init_storage() {
 
 	var catlist = [ 'Modig', 'Kreativitet', 'Liker' ];
 	var category = {
@@ -34,18 +34,18 @@ function init_storeage() {
 	var whenthen = {
 	};
 
-	localStoreage.setItem('catlist', catlist);
-	localStoreage.setItem('category', category);
-	localStoreage.setItem('read', read);
-	localStoreage.setItem('whenthen', whenthen);
-	localStoreage.setItem('visited', true);
+	localStorage.setItem('catlist', catlist);
+	localStorage.setItem('category', category);
+	localStorage.setItem('read', read);
+	localStorage.setItem('whenthen', whenthen);
+	localStorage.setItem('visited', true);
 }
 
 /*
 * Point functions
 */
 function addPoints(points) {
-	var currentStrength = sessionStoreage.get('category');
+	var currentStrength = sessionStorage.get('category');
 	var cat = getStrength(currentStrength);
 
 	if (cat == null) {
@@ -56,7 +56,7 @@ function addPoints(points) {
 }
 
 function getPoints() {
-	var currentCategory = sessionStoreage.get('category');
+	var currentCategory = sessionStorage.get('category');
 	var cat = getStrength(currentCategory);
 
 	if (cat == null) {
@@ -70,27 +70,27 @@ function getPoints() {
 * Strength functions
 */
 function addStrength(cat) {
-	var category = localStoreage.get('category');
+	var category = localStorage.get('category');
 	
 	category[cat] = {
 		'Poeng' : 0,
 		'Lest' : []
 	}
 
-	var list = localStoreage.get('catlist');
+	var list = localStorage.get('catlist');
 	list.push(cat);
 }
 
 function getStrength(cat) {
 
 	if (typeof cat == 'string') {
-		var category = localStoreage.get('category');
+		var category = localStorage.get('category');
 		return category[cat];
 	} else if (typeof cat == 'number') {
-		var category = localStoreage.get('catlist');
+		var category = localStorage.get('catlist');
 		return category[cat];
 	} else if (cat == null) {
-		return localStoreage.get('catlist');
+		return localStorage.get('catlist');
 	} 
 }
 
@@ -102,16 +102,16 @@ function setRead() {
 	/*
 		The user just finished reading a page.
 	*/
-	var page_read = sessionStoreage.get('page');
-	var cat = sessionStoreage.get('category');
+	var page_read = sessionStorage.get('page');
+	var cat = sessionStorage.get('category');
 
-	var toUpdate = localStoreage.get(cat);
+	var toUpdate = localStorage.get(cat);
 
 }
 
 function hasRead(page) {
-	var cat = sessionStoreage.get('category');
-	var pages_read = localStoreage.get(cat);
+	var cat = sessionStorage.get('category');
+	var pages_read = localStorage.get(cat);
 //	var hasRead = jQuery.inArray(page, pages_read);
 	
 	for (var i = 0; i < pages_read.length; ++i) {
@@ -123,16 +123,16 @@ function hasRead(page) {
 }
 
 function getRead() {
-	var active = sessionStoreage.get('category');
-	var category = localStoreage.get('category');
+	var active = sessionStorage.get('category');
+	var category = localStorage.get('category');
 
 	return category[active]['Lest'];
 }
 
 /*
-* SessionStoreage stuff
+* SessionStorage stuff
 */
 
 function setActiveCategory(cat) {
-	sessionStoreage.setItem('category', cat);
+	sessionStorage.setItem('category', cat);
 }
