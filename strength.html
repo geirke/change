@@ -16,18 +16,29 @@
         <script src="./js/strengths.js"></script>
         <script>
             $(function() {
+                init_storage();
                 initstrengths();
-                setActiveCategory(strength);
+                session.setCategory(strength);
             });
         </script>
     </head>
     <body>
-        <div data-role="page" class="page" id="main">
+        <div data-role="page" id="main" data-down="#whenthen" data-up="#whenthen">
             <div data-role="header"></div>
             <div data-role="content">
-                <strong></strong>
-                <div></div>
+                <div class="about header" id="about-header"></div>
+                <div class="about" id="about"></div>
             </div>
+        </div>
+        
+        <div data-role="page" id="whenthen" data-down="#main" data-up="#main">
+            <div data-role="header"></div>
+            <form action="">
+                <label for="when">Når jeg…</label>
+                <input type="text" id="when">
+                <label for="then">skal jeg…</label>
+                <input type="text" id="then">
+            </form>
         </div>
     </body>
 </html>

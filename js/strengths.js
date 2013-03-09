@@ -20,9 +20,9 @@ var getURLParameter = function(sParam) {
 };
 
 /*
- * 
+ * A dictionary of objects with data about strengths.
  */
-strengths = {
+var strengths = {
     'modig': {
         name: "Modig",
         header: "Den modige våger å møte livet slik livet er.",
@@ -55,19 +55,39 @@ var strength;
  */
 var initstrengths = function() {
     strength = getURLParameter('strength');
-    console.log(strength);
     main = $('div#main');
-    
-    if (strength) {
+
+    if (strength !== undefined && !isNaN(strength = parseInt(strength))) {
         // Set strength to an object from the strengths dictionary.
-        strength = strengths[strength];
-        console.log(strength);
-        main.find('.ui-header').html(strength.name);
-        main.find('.ui-content strong').html(strength.header);
-        main.find('.ui-content div').html(strength.about);
+        categoryList = category.list();
+        if (strength === 0) {
+            $('[data-role="page"]').each(function() {
+                $(this)[0].dataset['left'] = 'profil.html';
+                $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
+            });
+        } else if (strength >= categoryList.length - 1) {
+            $('[data-role="page"]').each(function() {
+                $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
+                $(this)[0].dataset['right'] = 'tekst.html';
+            });
+        } else {
+            $('[data-role="page"]').each(function() {
+                $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
+                $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
+            });
+        }
         
+        strength = strengths[categoryList[strength]];
+        console.log(strength);
+        main.find('#about-header').html(strength.header);
+        main.find('#about').html(strength.about);
+
+        $('div[data-role="header"]').each(function() {
+            $(this).html(strength.name);
+        });
+
     } else {
         main.find('.ui-header').html("ERROR!");
-        main.find('.ui-content div').html("Something horrible happened!");
+        main.find('#about').html("Something horrible happened!");
     }
 };
