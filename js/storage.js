@@ -12,7 +12,7 @@ var read = {
 
 var category = {
 	add: function(category) {
-		var gories = storage.category();
+		var gories = storage.getCategories();
 
 		gories[category] = {
 			'points': 0,
@@ -20,7 +20,11 @@ var category = {
 			'whenthen': []
 		}
 
-		storage.categoryList().push(category);
+		var list = storage.getCategoryList();
+		list.push(category);
+
+		storage.setCategoryList(list);
+		storage.setCategories(gories);
 	},
 
 	get: function(category) {
@@ -28,20 +32,22 @@ var category = {
 			category = session.category();
 		}
 
-		return storage.category(category);
+		return storage.getCategory(category);
 	},
 
 	getList: function(index) {
-		return storage.categoryList()[index];
+		return storage.getCategoryList()[index];
 	},
 	
 	list: function() {
-		return storage.categoryList();
+		return storage.getCategoryList();
 	},
 	
 	addPoints: function(points) {
-		var p = storage.category(session.getCategory());
-		p.points += points;
+		var curCat = session.getCategory();
+		var category = storage.getCategory(curCat);
+		category.points += points;
+		storage.setCategory(curCat, category);
 	},
 
 	getPoints: function(category) {
@@ -49,7 +55,7 @@ var category = {
 			category = session.getCategory();
 		}
 
-		return storage.category(category).points;
+		return storage.getCategory(category).points;
 	},
 
 	addWhenThen: function(when, then, category) {
@@ -57,8 +63,9 @@ var category = {
 			category = session.getCategory();
 		}
 
-		category = storage.category(category);
-		category['whenthen'].push({when: when, then: then});
+		var gory = storage.getCategory(category);
+		gory['whenthen'].push({when: when, then: then});
+		storage.setCategory(category, gory);
 	},
 
 	getWhenThen: function(category) {
@@ -87,21 +94,45 @@ var session = {
 }
 
 var storage = {
-	category: function(category) {
+	// Category
+	getCategory: function(category) {
 		if (category == null) {
 			return JSON.parse(localStorage.getItem('category'));
 		}
-		return JSON.parse(localStorage.getItem('category')[category]);
+		return JSON.parse(localStorage.getItem('category'))[category];
 	},
-	categoryList: function() {
+
+	setCategory: function(name, category) {
+		var gories = storage.getCategories();
+		gories[name] = category;
+		storage.setCategories(gories);
+	},
+
+	// Categories
+	getCategories: function() {
+		return JSON.parse(localStorage.getItem('category'));
+	},
+
+	setCategories: function(category) {
+		return localStorage.setItem('category', JSON.stringify(category));
+	},
+
+	// Category list
+	getCategoryList: function() {
 		return JSON.parse(localStorage.getItem('catlist'));
+	},
+
+	setCategoryList: function(list) {
+		localStorage.setItem('catlist', JSON.stringify(list));
 	}
 }
 
 
 function init_storage() {
+/*
 	if (JSON.parse(localStorage.getItem('visited')))
 		return;
+*/
 
 	localStorage.setItem('catlist', JSON.stringify([]));
 	localStorage.setItem('category', JSON.stringify({}));
@@ -110,4 +141,9 @@ function init_storage() {
 	category.add('modig');
 	category.add('lære');
 	category.add('kreativitet');
+
+	session.setCategory('modig');
+
+	category.addPoints(5);
+	category.addWhenThen('Skal ut på tur', 'Aldri sur');
 }
