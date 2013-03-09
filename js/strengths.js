@@ -56,16 +56,18 @@ var strength;
 var initstrengths = function() {
     strength = getURLParameter('strength');
     console.log(strength);
+    main = $('div#main');
+    
     if (strength) {
         // Set strength to an object from the strengths dictionary.
         strength = strengths[strength];
         console.log(strength);
-        main = $('div#main');
         main.find('.ui-header').html(strength.name);
         main.find('.ui-content strong').html(strength.header);
         main.find('.ui-content div').html(strength.about);
         
     } else {
-        $('div#main').html("Something horrible happened!");
+        main.find('.ui-header').html("ERROR!");
+        main.find('.ui-content div').html("Something horrible happened!");
     }
 };
