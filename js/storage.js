@@ -106,4 +106,8 @@ function init_storage() {
 	localStorage.setItem('catlist', []);
 	localStorage.setItem('category', {});
 	localStorage.setItem('visited', true);
+
+	category.add('modig');
+	category.add('lære');
+	category.add('kreativitet');
 }
