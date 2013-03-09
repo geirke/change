@@ -16,7 +16,8 @@ var category = {
 
 		gories[category] = {
 			'points': 0,
-			'pages': []
+			'pages': [],
+			'whenthen': []
 		}
 
 		storage.categoryList().push(category);
@@ -33,11 +34,29 @@ var category = {
 
 	getPoints: function(category) {
 		if (category == null) {
-			return storage.category(session.getCategory()).points;
+			category = session.getCategory();
 		}
 
 		return storage.category(category).points;
-	}
+	},
+
+	addWhenThen: function(when, then, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.category(category);
+		category['whenthen'].push({when: when, then: then});
+	},
+
+	getWhenThen: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.category(category);
+		return category['whenthen'];
+	} 
 };
 
 var session = {
@@ -57,6 +76,9 @@ var session = {
 
 var storage = {
 	category: function(category) {
+		if (category == null) {
+			return localStorage.get('category');
+		}
 		return localStorage.get('category')[category];
 	},
 	categoryList: function() {
@@ -69,31 +91,7 @@ function init() {
 	if (localStorage.get('visited'))
 		return;
 
-	var catlist = [ 'Modig', 'Kreativitet', 'Liker' ];
-	var category = {
-		'Modig' : {
-			'points': 0,
-			'pages' : []
-		},
-		'Kreativitet' : {
-			'points': 0,
-			'pages': []
-		},
-		'Liker' : {
-			'points': 0,
-			'pages': []
-		}
-	};
-
-	var read = {
-	};
-
-	var whenthen = {
-	};
-
-	localStorage.setItem('catlist', catlist);
-	localStorage.setItem('category', category);
-	localStorage.setItem('read', read);
-	localStorage.setItem('whenthen', whenthen);
+	localStorage.setItem('catlist', []);
+	localStorage.setItem('category', {});
 	localStorage.setItem('visited', true);
 }
