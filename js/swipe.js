@@ -1,5 +1,5 @@
 $(function() {
-    $('div.ui-page').on('swipe', function() {});
+    $('div.page').on('swipe', function() {});
 });
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
