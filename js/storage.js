@@ -99,7 +99,7 @@ var storage = {
 }
 
 
-function init() {
+function init_storage() {
 	if (localStorage.getItem('visited'))
 		return;
 
