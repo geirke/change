@@ -1,0 +1,109 @@
+<!----alle sider skal ha konstant header rader hver sin fargekode
+    - 640*960
+    - hake nede til hoyre
+  --->
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Test</title>
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+    <script src="./js/swipe.js"></script>
+  </head>
+  <body>
+
+    <div data-role="page" class="page" id="main" data-left="profil.html#main" data-right="strength.html?strength=.." data-down="#p1" data-up="#p3">
+      
+
+      <div data-role="header">
+	<h6>Tekster</h6>
+      </div><!-- /header -->
+
+      <div data-role="header" data-theme="b">
+	<h1>Strategi</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+	<!-- /content -->
+	<p>tekst</p>
+	<form>
+	  <label>
+            <input type="checkbox" name="checkbox-0 ">Lest
+	  </label>
+	</form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" class="page" id="p1" data-left="profil.html#main" data-right="strength.html?strength=.." data-down="#p2" data-up="#main">
+      
+
+      <div data-role="header">
+	<h6>Tekster</h6>
+      </div><!-- /header -->
+
+      <div data-role="header" data-theme="b">
+	<h1>Hei</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+	<!-- /content -->
+	<p>tekst</p>
+	<form>
+	  <label>
+            <input type="checkbox" name="checkbox-0 ">Lest
+	  </label>
+	</form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" class="page" id="p2" data-left="profil.html#main" data-right="strength.html?strength=.." data-down="#p3" data-up="#p1">
+      
+
+      <div data-role="header">
+	<h6>Tekster</h6>
+      </div><!-- /header -->
+
+      <div data-role="header" data-theme="b">
+	<h1>Maal</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+	<!-- /content -->
+	<p>tekst</p>
+	<form>
+	  <label>
+            <input type="checkbox" name="checkbox-0 ">Lest
+	  </label>
+	</form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+    <div data-role="page" class="page" id="main" data-left="profil.html#main" data-right="strength.html?strength=.." data-down="#main" data-up="#p2">
+      
+
+      <div data-role="header">
+	<h6>Tekster</h6>
+      </div><!-- /header -->
+
+      <div data-role="header" data-theme="b">
+	<h1>Siste</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+	<!-- /content -->
+	<p>tekst</p>
+	<form>
+	  <label>
+            <input type="checkbox" name="checkbox-0 ">Lest
+	  </label>
+	</form>
+      </div><!-- /content -->
+    </div><!-- /page -->
+
+  </body>
+</html>
