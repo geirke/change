@@ -1,6 +1,5 @@
 $(function() {
     $(document).bind("pagechange", function(event, obj) {
-    	alert("hei");
     	$('div.page').on('swipe', function() {});
     });
     $('div.page').on('swipe', function() {});
