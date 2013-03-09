@@ -1,8 +1,8 @@
 $(function() {
     $(document).bind("pagechange", function(event, obj) {
-    	$('div[data-role="page"]').on('swipe', function() {});
+    	$('div.page').on('swipe', function() {});
     });
-    $('div[data-role="page"]').on('swipe', function() {});
+    $('div.page').on('swipe', function() {});
 });
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
@@ -13,11 +13,11 @@ $.event.special.swipe.handleSwipe = function(start, stop) {
 	if (Math.abs(dx) > Math.abs(dy)) { //rl move
 	    if (dx > 0) {
 		if(page.dataset["right"]) {
-		    $.mobile.changePage(page.dataset["right"], { transition: "slide" }); //right
+		    $.mobile.changePage(page.dataset["right"], { reloadPage: true, transition: "slide" }); //right
 		}
 	    } else {
 		if(page.dataset["left"]) {
-		    $.mobile.changePage(page.dataset["left"], { transition: "slide", reverse: true }); //left
+		    $.mobile.changePage(page.dataset["left"], { reloadPage: true, transition: "slide", reverse: true }); //left
 		}
 	    }
 	} else {
