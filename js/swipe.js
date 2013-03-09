@@ -1,14 +1,21 @@
 var mustReload = false;
 $(function() {
-    $(document).bind("pagechange", function(event, obj) {
-    	$('div.page').on('swipe', function() {});
+	initPage();
+    $(document).bind("pagechange", initPage);
+});
+
+function initPage() {
 	if (mustReload) {
 	    mustReload = false;
 	    window.location.reload();
 	}
-    });
-    $('div.page').on('swipe', function() {});
-});
+	var $pages = $('div[data-role="page"]');
+	$pages.on('swipe', function() {});
+	$pages.each(function() {
+		$this = $(this);
+		$this.append('<div class="rightPanel"></div>');
+	});
+}
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
 	page = $.mobile.activePage[0];
@@ -42,4 +49,4 @@ $.event.special.swipe.handleSwipe = function(start, stop) {
 		}
 	    }
 	}
-    }
+}
