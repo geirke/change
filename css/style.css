@@ -35,3 +35,19 @@ table td.tdRight {
 .contentRight {
 
 }
+
+.unreadCheckbox {
+	width: 62px;
+	height: 62px;
+	float: right;
+	background: url('../img/check.png');
+	cursor: pointer;
+}
+
+.readCheckbox {
+	width: 62px;
+	height: 62px;
+	float: right;
+	margin-right: 1em;
+	background: url('../img/check_green.png');	
+}
