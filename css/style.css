@@ -1,9 +1,34 @@
-div.rightPanel {
-	position: fixed;
-	right: 0;
-	width: 20px;
+div.activeDot {
+	width: 16px;
+	height: 16px;
+	background: url('../img/black_dot.png');
+	margin: auto;
 }
 
-.head {
-   color: #ecebeb; 
+div.greyDot {
+	width: 16px;
+	height: 16px;
+	background: url('../img/grey_dot.png');
+	margin: auto;
+	cursor: pointer;
+}
+
+table td.tdLeft {
+	width: 90%;
+}
+
+table td.tdRight {
+	width: 10%;
+}
+
+.fillPanel {
+	width: 100%;
+}
+
+.contentLeft {
+
+}
+
+.contentRight {
+
 }
