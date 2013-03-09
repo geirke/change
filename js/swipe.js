@@ -11,10 +11,37 @@ function initPage() {
 	}
 	var $pages = $('div[data-role="page"]');
 	$pages.on('swipe', function() {});
-	$pages.each(function() {
+	var numPages = $pages.size();
+	$pages.each(function(index) {
 		$this = $(this);
-		$this.append('<div class="rightPanel"></div>');
+		var $content = $this.find('div[data-role="content"]');
+		if ($content.find('.contentSplit').size() == 0) {
+			var $realContent = $content.children().clone();
+			$content.children().remove();
+			$content.append('<div class="contentSplit"><table class="fillPanel"><tr><td class="tdLeft"><div id="contentLeft" class="contentLeft"></div></td><td class="tdRight"><div id="contentRight" class="contentRight"></div></td></tr></table></div>');
+			$content.find('div#contentLeft').append($realContent);
+			var dotStr = '<div class="rightPanel">';
+			for (var i = 0; i < numPages; ++i) {
+				if (i == index) {
+					dotStr += '<div class="activeDot"/>';
+				} else {
+					dotStr += '<div class="greyDot" onClick="gotoPage(' + index + ', ' + i + ')"/>';
+				}
+			}
+			dotStr += '</div>';
+			$content.find('div#contentRight').append(dotStr);
+		}
 	});
+}
+
+function gotoPage(from, index) {
+	var direction = (index > from ? 'down' : 'up');	
+	var name = '#p' + index;
+	if (index == 0) {
+		direction = 'up';
+		name = '#main';
+	}
+    $.mobile.changePage(name, { transition: "slide" + direction });	
 }
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
