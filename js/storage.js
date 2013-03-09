@@ -22,6 +22,18 @@ var category = {
 
 		storage.categoryList().push(category);
 	},
+
+	get: function(category) {
+		if (category == null) {
+			category = session.category();
+		}
+
+		return storage.category(category);
+	},
+
+	getList: function(index) {
+		return storage.categoryList()[index];
+	},
 	
 	list: function() {
 		return storage.categoryList();
@@ -56,7 +68,7 @@ var category = {
 
 		category = storage.category(category);
 		return category['whenthen'];
-	} 
+	}
 };
 
 var session = {
@@ -67,28 +79,28 @@ var session = {
 		sessionStorage.setItem('page', page)
 	},
 	getCategory: function() {
-		return sessionStorage.get('category');
+		return sessionStorage.getItem('category');
 	},
 	getPage: function() {
-		return sessionStorage.get('page');
+		return sessionStorage.getItem('page');
 	}
 }
 
 var storage = {
 	category: function(category) {
 		if (category == null) {
-			return localStorage.get('category');
+			return localStorage.getItem('category');
 		}
-		return localStorage.get('category')[category];
+		return localStorage.getItem('category')[category];
 	},
 	categoryList: function() {
-		return localStorage.get('catlist');
+		return localStorage.getItem('catlist');
 	}
 }
 
 
 function init() {
-	if (localStorage.get('visited'))
+	if (localStorage.getItem('visited'))
 		return;
 
 	localStorage.setItem('catlist', []);
