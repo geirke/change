@@ -73,39 +73,39 @@ var category = {
 
 var session = {
 	setCategory: function(category) {
-		sessionStorage.setItem('category', category);
+		sessionStorage.setItem('category', JSON.stringify(category));
 	},
 	setPage: function(page) {
-		sessionStorage.setItem('page', page)
+		sessionStorage.setItem('page', JSON.stringify(page));
 	},
 	getCategory: function() {
-		return sessionStorage.getItem('category');
+		return JSON.parse(sessionStorage.getItem('category'));
 	},
 	getPage: function() {
-		return sessionStorage.getItem('page');
+		return JSON.parse(sessionStorage.getItem('page'));
 	}
 }
 
 var storage = {
 	category: function(category) {
 		if (category == null) {
-			return localStorage.getItem('category');
+			return JSON.parse(localStorage.getItem('category'));
 		}
-		return localStorage.getItem('category')[category];
+		return JSON.parse(localStorage.getItem('category')[category]);
 	},
 	categoryList: function() {
-		return localStorage.getItem('catlist');
+		return JSON.parse(localStorage.getItem('catlist'));
 	}
 }
 
 
 function init_storage() {
-	if (localStorage.getItem('visited'))
+	if (JSON.parse(localStorage.getItem('visited')))
 		return;
 
-	localStorage.setItem('catlist', []);
-	localStorage.setItem('category', {});
-	localStorage.setItem('visited', true);
+	localStorage.setItem('catlist', JSON.stringify([]));
+	localStorage.setItem('category', JSON.stringify({}));
+	localStorage.setItem('visited', JSON.stringify(true));
 
 	category.add('modig');
 	category.add('lære');
