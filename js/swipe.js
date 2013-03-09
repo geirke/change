@@ -6,7 +6,6 @@ $.event.special.swipe.handleSwipe = function(start, stop) {
     page = $.mobile.activePage[0];
     var dx = start.coords[0] - stop.coords[0];
     var dy = start.coords[1] - stop.coords[1];
-    $.mobile.changePage("#flower");
 
     if (Math.abs(dx) > Math.abs(dy)) { //rl move
 	if (dx > 0) {
