@@ -2,14 +2,14 @@ div.activeDot {
 	width: 16px;
 	height: 16px;
 	background: url('../img/black_dot.png');
-	margin: auto;
+	margin: 10px auto;
 }
 
 div.greyDot {
 	width: 16px;
 	height: 16px;
 	background: url('../img/grey_dot.png');
-	margin: auto;
+	margin: 10px auto;
 	cursor: pointer;
 }
 
@@ -37,6 +37,7 @@ table td.tdRight {
 	width: 62px;
 	height: 62px;
 	float: right;
+	margin-right: 1em;
 	background: url('../img/check.png');
 	cursor: pointer;
 }
