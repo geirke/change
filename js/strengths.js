@@ -128,20 +128,21 @@ var initstrengths = function() {
     theme = String.fromCharCode(99 + strength);
     strength = categoryList[strength];
     categoryData = category.get(strength);
+    console.log(categoryData);
     
-    strength = strengths[strength];
-    console.log(strength);
-    main.find('#about-header').html(strength.header);
-    main.find('#about').html(strength.about);
+    cat = strengths[strength];
+    main.find('#about-header').html(cat.header);
+    main.find('#about').html(cat.about);
 
     $('div[data-role="header"]').each(function() {
-        $(this).find('h1').html(strength.name);
+        $(this).find('h1').html(cat.name);
         $(this)[0].dataset['theme'] = theme;
     });
     
     $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
-    $('#whenthen').submit(function(event) {
-        console.log(event);
+    $('#whenthen').submit(function() {
+        category.addWhenThen($('#when').val(), $('#then').val());
+        return false;
     });
     
     if (categoryData.whenthen.length !== 0) {
