@@ -224,4 +224,12 @@ function init_storage() {
 	category.add('kreativitet');
 
 	session.setCategory('modig');
+        
+        category.addWhenThen('blir ranet', 'ikke skrike', 'modig');
+        category.addWhenThen('er på hackathon', 'lære meg jQuery', 'lære');
+        category.addWhenThen('får et problem', 'hacker jeg til en løsning', 'kreativitet');
+        
+        category.addStrategy('Jeg kan slåss mot bjørner', 'modig');
+        category.addStrategy('Jeg kan lese bøker','lære');
+        category.addStrategy('Jeg kan lage apps for Changetech','kreativitet');
 }
