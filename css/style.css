@@ -33,11 +33,10 @@ table td.tdRight {
 }
 
 .contentLeft {
-
+	min-height: 100%;
 }
 
 .contentRight {
-
 }
 
 .unreadCheckbox {
@@ -71,7 +70,7 @@ div.scoreAnimationBegin {
 }
 div#progress1 {
 	width: 42%;
-	height: 50px;
+	height: 30px;
 	border: 1px solid #eee;
 	border-radius: 5px;
 	background: #e95d22;
@@ -79,7 +78,7 @@ div#progress1 {
 
 div#progress2 {
 	width: 66%;
-	height: 50px;
+	height: 30px;
 	border: 1px solid #eee;
 	border-radius: 5px;
 	background: #009e68;
@@ -94,7 +93,7 @@ div#progress2 {
 
 div#progress3 {
 	width: 10%;
-	height: 50px;
+	height: 30px;
 	border-radius: 5px;
 	background: #017890;
 }
