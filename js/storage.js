@@ -3,11 +3,11 @@ var read = {
 		var list = read.list();
 		if (!read.hasRead(list, id)) {
 			list.push(id);
-			localStorage.setItem('readtextlist', JSON.stringify(list));
+			storage.setItem('readtextlist', list);
 		}
 	},
 	list: function() {
-		return JSON.parse(localStorage.getItem('readtextlist'));
+		return storage.getItem('readtextlist');
 	},
 	hasRead: function(list, id) {
 		var found = false;
@@ -28,7 +28,7 @@ var category = {
 			'points': 0,
 			'pages': [],
 			'whenthen': [],
-			'relation' : {}
+			'relation' : []
 		}
 
 		var list = storage.getCategoryList();
@@ -40,7 +40,7 @@ var category = {
 
 	get: function(category) {
 		if (category == null) {
-			category = session.category();
+			category = session.getCategory();
 		}
 
 		return storage.getCategory(category);
@@ -88,13 +88,13 @@ var category = {
 		return category['whenthen'];
 	},
 
-	addReleation: function(relation, value, category) {
+	addReleation: function(index, value, category) {
 		if (category == null) {
 			category = session.getCategory();
 		}
 
 		var gory = storage.category(category);
-		gory['relation'][releation] = value;
+		gory['relation'][index] = value;
 		storage.setCategory(category, gory);
 	},
 
@@ -173,6 +173,14 @@ var storage = {
 
 	setCategoryList: function(list) {
 		localStorage.setItem('catlist', JSON.stringify(list));
+	},
+
+	getItem: function(key) {
+		return JSON.parse(localStorage.getItem(key));
+	},
+
+	setItem: function(key, value) {
+		localStorage.setItem(key, JSON.stringify(value));
 	}
 }
 
