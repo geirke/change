@@ -101,3 +101,15 @@ div.progressBorder {
 	border-radius: 5px;
 }
 .ui-submit { display: none;}
+
+.ui-slider-track {
+    height: 0.5em !important;
+    margin-top: 0.25em !important;
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
+
+.ui-slider-handle .ui-btn-inner {
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
