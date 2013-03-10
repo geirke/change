@@ -5,6 +5,18 @@ body {
 
 }
 
+h2 {
+    margin-height: 100px;
+    font-weight :normal;
+    font-size: 125%;
+
+}
+
+[data-role="content"] {
+    margin-left: 20px;
+    padding-height: 40px;
+}
+
 div.activeDot {
 	width: 16px;
 	height: 16px;
