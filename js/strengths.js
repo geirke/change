@@ -193,15 +193,21 @@ var initstrengths = function() {
     
     $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
 
-    $('#whenthen').submit(function() {
+    $('#whenthen').change(function() {
         category.addWhenThen($('#when').val(), $('#then').val());
         return false;
     });
-
-    $('#wheni').submit(function() {
+    $('#whenthen').submit(function() {
+        return false;
+    });
+    
+    $('#wheni').change(function() {
         category.addStrategy($('#v1').val());
         category.addStrategy($('#v2').val());
         category.addStrategy($('#v3').val());
+        return false;
+    });
+    $('#wheni').submit(function() {
         return false;
     });
     
