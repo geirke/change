@@ -34,8 +34,8 @@ table td.tdRight {
 }
 
 .unreadCheckbox {
-	width: 62px;
-	height: 62px;
+	width: 43px;
+	height: 43px;
 	float: right;
 	margin-right: 1em;
 	background: url('../img/check.png');
@@ -43,8 +43,8 @@ table td.tdRight {
 }
 
 .readCheckbox {
-	width: 62px;
-	height: 62px;
+	width: 43px;
+	height: 43px;
 	float: right;
 	margin-right: 1em;
 	background: url('../img/check_green.png');	
