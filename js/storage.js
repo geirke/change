@@ -27,7 +27,8 @@ var category = {
 		gories[category] = {
 			'points': 0,
 			'pages': [],
-			'whenthen': []
+			'whenthen': [],
+			'relation' : {}
 		}
 
 		var list = storage.getCategoryList();
@@ -85,6 +86,44 @@ var category = {
 
 		category = storage.category(category);
 		return category['whenthen'];
+	},
+
+	addReleation: function(relation, value, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		var gory = storage.category(category);
+		gory['relation'][releation] = value;
+		storage.setCategory(category, gory);
+	},
+
+	getReleations: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.category(category);
+		return category['releation'];
+	},
+
+	addPage: function(page, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		var gory = storage.getCategory(category);
+		category['pages'].push(page);
+		storage.setCategory(category, gory);
+	},
+
+	pagesRead: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.getCategory(category);
+		return category['pages'];
 	}
 };
 
