@@ -18,6 +18,13 @@
     <script src="./js/jquery.mobile-1.3.0.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/swipe.js"></script>
+    <script src="./js/strengths.js"></script>
+    <script>
+      $(function() {
+          fillText();
+          session.setCategory(strength);
+      });
+    </script>    
   </head>
   <body data-theme="b">
 
@@ -28,20 +35,25 @@
       </div><!-- /header -->
 
       <div data-role="content">
-        <h2>Hei Karen!</h2>
+        <h2>Hei Karen</h2>
 	<p>Her ser du en oversikt over progresjon for dine signaturstyrker:</p>
-	<br>
-        <p>Modig</p>
-        <div class="progressBorder">
-          <div id="progress1"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=0', { reloadPage: true, transition: 'slide' });">
+          <p>Modig</p>
+          <div class="progressBorder">
+            <div id="progress1"></div>
+          </div>
         </div>
-        <p>Kreativ</p>
-        <div class="progressBorder">
-          <div id="progress2"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=1', { reloadPage: true, transition: 'slide' });">
+          <p>Liker å lære</p>
+          <div class="progressBorder">
+            <div id="progress2"></div>
+          </div>
         </div>
-        <p>Liker å lære</p>
-        <div class="progressBorder">
-          <div id="progress3"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=2', { reloadPage: true, transition: 'slide' });">
+          <p>Kreativitet</p>
+          <div class="progressBorder">
+            <div id="progress3"></div>
+          </div>
         </div>
       </div><!-- /content -->
     </div><!-- /page -->
@@ -53,6 +65,7 @@
       </div><!-- /header -->
 
       <div data-role="content">
+        <!-- /content -->        
         <p>ting1</p>
         <p>ting2</p>
         <p>ting3 </p>
@@ -67,9 +80,10 @@
 
       <div data-role="content">
         <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+        <h2>Dine strategier for "<span class="strenght-0"></span>"</h2>
+        <p id="strat0-0"></p>
+        <p id="strat1-0"></p>
+        <p id="strat2-0"></p>
       </div><!-- /content -->
     </div><!-- /page -->
 
@@ -95,9 +109,11 @@
 
       <div data-role="content">
         <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+        <h2>Dine strategier for "<span class="strenght-1"></span>"</h2>
+        <p id="strat0-1"></p>
+        <p id="strat1-1"></p>
+        <p id="strat2-1"></p>
+      </div><!-- /content -->
       </div><!-- /content -->
     </div><!-- /page -->
 
@@ -123,9 +139,10 @@
 
       <div data-role="content">
         <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+        <h2>Dine strategier for "<span class="strenght-2"></span>"</h2>
+        <p id="strat0-2"></p>
+        <p id="strat1-2"></p>
+        <p id="strat2-2"></p>
       </div><!-- /content -->
     </div><!-- /page -->
 
