@@ -80,6 +80,10 @@ table td.tdRight {
 	cursor: pointer;
 }
 
+.checkedCheckbox {
+	background: url('../img/one_up.png');
+}
+
 .clickable {
 	cursor: pointer;
 }
