@@ -73,6 +73,11 @@ function readText($div, textId) {
 }
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
+        originclasses = start.origin.attr('class');
+        if (originclasses.indexOf('ui-btn') !== -1
+            || originclasses.indexOf('ui-slider') !== -1) {
+            return false;
+        }
 	page = $.mobile.activePage[0];
 	var dx = start.coords[0] - stop.coords[0];
 	var dy = start.coords[1] - stop.coords[1];
