@@ -22,8 +22,8 @@ function initPage() {
 	    var $realContent = $content.children().clone();
 	    $content.children().remove();
 	    $content.append('<div class="contentSplit"><table class="fillPanel"><tr><td class="tdLeft"><div id="contentLeft" class="contentLeft"></div></td><td class="tdRight"><div id="contentRight" class="contentRight"></div></td></tr></table></div>');
-	    $content.find('div#contentLeft').append($realContent);
-	    var dotStr = '<div class="rightPanel">';
+	    $content.find('div#contentLeft').append($realContent);	    
+	    var dotStr = '<div class="rightPanel"/><div class="rightPanelAbs"><div class="innerRightPanelAbs">';
 	    for (var i = 0; i < numPages; ++i) {
 		if (i == index) {
 		    dotStr += '<div class="activeDot"/>';
@@ -31,20 +31,23 @@ function initPage() {
 		    dotStr += '<div class="greyDot" onClick="gotoPage(' + index + ', ' + i + ')"/>';
 		}
 	    }
-	    dotStr += '</div>';
+	    dotStr += '</div></div>';
 	    $content.find('div#contentRight').append(dotStr);
+	    var $inner = $content.find('div.innerRightPanelAbs');
+	    var pos = ($(window).height() - $inner.height()) / 2;
+	    $inner.css('top', pos + 'px');
 	}
 	var $textContent = $this.find('div[data-text="true"]');
 	var textId = $this.attr('id');
 	if ($textContent.find('div.readingCheckbox').size() == 0) {
 	    if (read.hasRead(readList, textId)) {
-		$textContent.append('<div class="readCheckbox readingCheckbox"/>');
-		$textContent.find('.unreadCheckbox').on('click', function() {});
+			$textContent.append('<div class="readCheckbox readingCheckbox"/>');
+			$textContent.find('.unreadCheckbox').on('click', function() {});
 	    } else {
-		$textContent.append('<div class="unreadCheckbox readingCheckbox"/>');
-		$textContent.find('.unreadCheckbox').on('click', function() {
-		    readText($(this), textId);
-		});
+			$textContent.append('<div class="unreadCheckbox readingCheckbox"/>');
+			$textContent.find('.unreadCheckbox').on('click', function() {
+			    readText($(this), textId);
+			});
 	    }
 	}
     });

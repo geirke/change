@@ -36,20 +36,31 @@ table td.tdRight {
 .contentRight {
 }
 
-.unreadCheckbox {
+.rightPanelAbs {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 10%;
+}
+
+.innerRightPanelAbs {
+	position: absolute;
+}
+
+.readingCheckbox {
 	width: 43px;
 	height: 43px;
-	float: right;
-	margin-right: 1em;
+	position: absolute;
+	bottom: 1em;
+	right: 1em;		
+}
+
+.unreadCheckbox {
 	background: url('../img/check.png');
 	cursor: pointer;
 }
 
 .readCheckbox {
-	width: 43px;
-	height: 43px;
-	float: right;
-	margin-right: 1em;
 	background: url('../img/check_green.png');	
 }
 
