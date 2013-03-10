@@ -66,7 +66,7 @@ var strengths = {
         name: "Modig",
         header: "Den modige våger å møte livet slik livet er.",
         about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
-
+        challenges: ["Gjør noe som utfordrer komfortsonen din", "Tørr å si ifra om du mener noe er urettferdig"],
         sliders: [
             {
                 text: "Familien",
@@ -86,6 +86,7 @@ var strengths = {
         name: "Liker å lære",
         header: "Læring er en positiv erfaring.",
         about: "Liker å utvikle nye ferdigheter, og lære nye ting.",
+        challenges: ["Meld deg på et kurs i noe du ikke kan", "Eksperimenter med matlaging, lær deg en ny oppskrift!", "Fordyp deg i et tema du er nysgjerring på"],
         sliders: [
             {
                 text: "Utdanning",
@@ -105,6 +106,7 @@ var strengths = {
         name: "Kreativitet",
         header: "Kreativitet er skapende evne eller virksomhet.",
         about: "Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.",
+        challenges: ["Kom med nye ideer på arbeidsplassen", "Har du en ide, realiser den!", "Dyrk hobbyene dine"],
         sliders: [
             {
                 text: "Løgner",
@@ -173,6 +175,12 @@ var initstrengths = function() {
     cat = strengths[strength];
     main.find('#about-header').html(cat.header);
     main.find('#about').html(cat.about);
+    var $tips = $('#tips');
+    var tipsStr = "";
+    for (var i = 0; i < cat.challenges.length; i++) {
+        tipsStr += "<p>" + cat.challenges[i] + "</p>";
+    }
+    $tips.html(tipsStr);
 
     $('div[data-role="header"]').each(function() {
         $(this).find('h1').html(cat.name);
@@ -202,6 +210,7 @@ var initstrengths = function() {
     }
     
     $('.strength-name').html(cat.name);
+    $('.st')
     
     console.log(categoryData);
     if (cat.sliders.length > 0) {
