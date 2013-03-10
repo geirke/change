@@ -132,7 +132,11 @@ var strength;
  */
 var initstrengths = function() {
     strength = getURLParameter('strength');
-    main = $('div#main');
+
+    body = $('body');
+    body.detach();
+
+    main = $('div#main', body);
 
     if (strength === undefined || isNaN(strength = parseInt(strength))) {
         strength = 0;
@@ -151,17 +155,17 @@ var initstrengths = function() {
         strength = categoryList.length - 1;
     }
 
-    $('[data-role="page"]').each(function() {
+    $('[data-role="page"]', body).each(function() {
         if (strength === 0) {
-            $(this)[0].dataset['left'] = 'profil.html';
+            $(this, body)[0].dataset['left'] = 'profil.html';
         } else {
-            $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
+            $(this, body)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
         }
 
         if (strength === categoryList.length - 1) {
-            $(this)[0].dataset['right'] = 'tekst.html';
+            $(this, body)[0].dataset['right'] = 'tekst.html';
         } else {
-            $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
+            $(this, body)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
         }
     });
 
@@ -171,22 +175,23 @@ var initstrengths = function() {
     console.log(categoryData);
     
     cat = strengths[strength];
+
     main.find('#about-header').html(cat.header);
     main.find('#about').html(cat.about);
 
-    $('div[data-role="header"]').each(function() {
+    $('div[data-role="header"]', body).each(function() {
         $(this).find('h1').html(cat.name);
         $(this)[0].dataset['theme'] = theme;
     });
     
-    $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
+    $('.ui-bar-a', body).removeClass('ui-bar-a').addClass('ui-bar-' + theme);
 
-    $('#whenthen').submit(function() {
+    $('#whenthen', body).submit(function() {
         category.addWhenThen($('#when').val(), $('#then').val());
         return false;
     });
 
-    $('#wheni').submit(function() {
+    $('#wheni', body).submit(function() {
         category.addStrategy($('#v1').val());
         category.addStrategy($('#v2').val());
         category.addStrategy($('#v3').val());
@@ -194,14 +199,24 @@ var initstrengths = function() {
     });
     
     if (categoryData.whenthen.length !== 0) {
-        $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
-        $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
+        $('#when', body).val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
+        $('#then', body).val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
     } else {
-        $('#when').val('');
-        $('#then').val('');
+        $('#when', body).val('');
+        $('#then', body).val('');
+    }
+
+    if (categoryData.strategies.length !== 0) {
+        $('#v1', body).val(categoryData.strategies[0]);
+        $('#v2', body).val(categoryData.strategies[0]);
+        $('#v3', body).val(categoryData.strategies[0]);
+    } else {
+        $('#v1', body).val('');
+        $('#v2', body).val('');
+        $('#v3', body).val('');
     }
     
-    $('.strength-name').html(cat.name);
+    $('.strength-name', body).html(cat.name);
     
     console.log(categoryData);
     if (cat.sliders.length > 0) {
@@ -214,9 +229,11 @@ var initstrengths = function() {
             $('<label for="slider' + i + '">' + cat.sliders[i].text + '</label>'
               + '<input type="range" min="' + cat.sliders[i].range[0]
               + '" max="' + cat.sliders[i].range[1] + '" value="'
-              + value +'">').appendTo($('#sliders'));
+              + value +'">', body).appendTo($('#sliders'));
         }
     }
+
+    body.appendTo($('html'));
 };
 
 function fillText() {
