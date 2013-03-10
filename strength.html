@@ -20,9 +20,11 @@
         <script src="./js/strengths.js"></script>
         <script>
             $(function() {
-                init_storage();
                 initstrengths();
+                init_storage();
                 session.setCategory(strength);
+                initPage();
+                $(document).bind("pagechange", initPage);
             });
         </script>
     </head>
