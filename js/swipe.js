@@ -1,4 +1,5 @@
 var mustReload = false;
+
 $(function() {
     init_storage();
     initPage();
@@ -75,13 +76,14 @@ function readText($div, textId) {
 	$('body').append('<div id="scoreDiv" class="scoreAnimationBegin">+10</div>');
 	$scoreDiv = $('div#scoreDiv');
 	if ($scoreDiv.size() == 0) {
-		$('body').append('<div id="scoreDiv" class="scoreAnimationBegin">+10</div>');
-		$scoreDiv = $('div#scoreDiv');
-	$scoreDiv.animate({ borderRadius: '20px', width: '40px', height: '40px', fontSize: '20px', lineHeight: '40px' }, 300, function() { /* $(this).fadeToggle(3000); */ });
+	    $('body').append('<div id="scoreDiv" class="scoreAnimationBegin">+10</div>');
+	    $scoreDiv = $('div#scoreDiv');
+	    $scoreDiv.animate({ borderRadius: '20px', width: '40px', height: '40px', fontSize: '20px', lineHeight: '40px' }, 300, function() { /* $(this).fadeToggle(3000); */ });
 	}
 	$
 	$div.removeClass('unreadCheckbox');
 	$div.addClass('readCheckbox');
+    }
 }
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
