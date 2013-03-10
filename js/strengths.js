@@ -29,16 +29,16 @@ var strengths = {
         about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
         sliders: [
             {
-                text: "Mot er viktig for familien",
-                range: [1, 5]
+                text: "Familien",
+                range: [1, 10]
             },
             {
-                text: "Mot er viktig for dama",
-                range: [1, 5]
+                text: "Dama",
+                range: [1, 10]
             },
             {
-                text: "Mot er viktig i kamp mot drager",
-                range: [1, 5]
+                text: "Kamp mot drager",
+                range: [1, 10]
             }
         ]
     },
@@ -48,16 +48,16 @@ var strengths = {
         about: "Liker å utvikle nye ferdigheter, og lære nye ting.",
         sliders: [
             {
-                text: "Læring er lurt i utdanning",
-                range: [1, 5]
+                text: "Utdanning",
+                range: [1, 10]
             },
             {
-                text: "Det er viktig å lære på jobb",
-                range: [1, 5]
+                text: "Jobb",
+                range: [1, 10]
             },
             {
-                text: "Læring er viktig i kamp mot drager",
-                range: [1, 5]
+                text: "Kamp mot drager",
+                range: [1, 10]
             }
         ]
     },
@@ -67,15 +67,15 @@ var strengths = {
         about: "Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.",
         sliders: [
             {
-                text: "Kreativitet hjelper når du ljuger",
+                text: "Løgner",
                 range: [1, 5]
             },
             {
-                text: "Kreativitet er bra når man lager apper",
+                text: "App-utvikling",
                 range: [1, 5]
             },
             {
-                text: "Kreativitet er viktig i kamp mot drager",
+                text: "Kamp mot drager",
                 range: [1, 5]
             }
         ]
@@ -151,5 +151,22 @@ var initstrengths = function() {
     } else {
         $('#when').val('');
         $('#then').val('');
+    }
+    
+    $('.strength-name').html(cat.name);
+    
+    console.log(categoryData);
+    if (cat.sliders.length > 0) {
+        for (i in cat.sliders) {
+            value = Math.floor((cat.sliders[i].range[1] - cat.sliders[i].range[0]) / 2 + cat.sliders[i].range[0]);
+            if (i in categoryData.relation) {
+                value = categoryData.relation[i];
+            }
+            
+            $('<label for="slider' + i + '">' + cat.sliders[i].text + '</label>'
+              + '<input type="range" min="' + cat.sliders[i].range[0]
+              + '" max="' + cat.sliders[i].range[1] + '" value="'
+              + value +'">').appendTo($('#sliders'));
+        }
     }
 };
