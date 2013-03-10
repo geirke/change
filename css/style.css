@@ -84,6 +84,14 @@ table td.tdRight {
 	cursor: pointer;
 }
 
+.progressBorder {
+    height: 15px;
+}
+
+.innerProgress{
+    height: 13px !important;
+}
+
 .readCheckbox {
 	background: url('../img/check_green.png');	
 }
