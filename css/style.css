@@ -45,6 +45,7 @@ table td.tdRight {
 }
 
 .contentLeft {
+	width: 85%;
 	min-height: 100%;
 }
 
@@ -61,6 +62,7 @@ table td.tdRight {
 .innerRightPanelAbs {
 	position: absolute;
 	top: 160px;
+	right: 20px;
 }
 
 .readingCheckbox {
@@ -139,4 +141,8 @@ div.progressBorder {
 .ui-slider-handle .ui-btn-inner {
     background: #202020 !important;
     border-color: #303030 !important;
+}
+
+img.emblemImg {
+	width: 120px;
 }
