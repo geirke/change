@@ -27,6 +27,7 @@ var strengths = {
         name: "Modig",
         header: "Den modige våger å møte livet slik livet er.",
         about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
+
         sliders: [
             {
                 text: "Familien",
@@ -140,8 +141,16 @@ var initstrengths = function() {
     });
     
     $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
+
     $('#whenthen').submit(function() {
         category.addWhenThen($('#when').val(), $('#then').val());
+        return false;
+    });
+
+    $('#wheni').submit(function() {
+        category.addStrategy($('#v1').val());
+        category.addStrategy($('#v2').val());
+        category.addStrategy($('#v3').val());
         return false;
     });
     
