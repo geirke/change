@@ -67,4 +67,5 @@ div.scoreAnimationBegin {
 	text-shadow: none !important;
 	font-size: 20pt !important;
 	font-weight: normal !important; 
+	text-transform: uppercase !important;	
 }
