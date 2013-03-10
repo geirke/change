@@ -1,3 +1,7 @@
+body {
+  font-family: Myriad Pro Regular, Arial Unicode MS, Arial, sans-serif !important;
+}
+
 div.activeDot {
 	width: 16px;
 	height: 16px;
@@ -58,7 +62,36 @@ div.scoreAnimationBegin {
 	height: 80px;
 	border-radius: 40px;
 	color: #fff;
-	background: #017890;
+	background: #613D2D;
 	font-size: 40px;
 	line-height: 80px;
+}
+
+div#progress1 {
+	width: 42%;
+	height: 50px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	background: #e95d22;
+}
+
+div#progress2 {
+	width: 66%;
+	height: 50px;
+	border: 1px solid #eee;
+	border-radius: 5px;
+	background: #009e68;
+}
+
+div#progress3 {
+	width: 10%;
+	height: 50px;
+	border-radius: 5px;
+	background: #017890;
+}
+
+div.progressBorder {
+	width: 100%;
+	border: 3px solid #888;
+	border-radius: 5px;
 }
