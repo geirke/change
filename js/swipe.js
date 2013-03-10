@@ -1,5 +1,6 @@
 var mustReload = false;
 $(function() {
+	init_storage();
 	initPage();
     $(document).bind("pagechange", initPage);
 });
@@ -12,6 +13,7 @@ function initPage() {
 	var $pages = $('div[data-role="page"]');
 	$pages.on('swipe', function() {});
 	var numPages = $pages.size();
+	var readList = read.list();
 	$pages.each(function(index) {
 		$this = $(this);
 		var $content = $this.find('div[data-role="content"]');
@@ -31,17 +33,42 @@ function initPage() {
 			dotStr += '</div>';
 			$content.find('div#contentRight').append(dotStr);
 		}
+		var $textContent = $this.find('div[data-text="true"]');
+		var textId = $this.attr('id');
+		if ($textContent.find('div.readingCheckbox').size() == 0) {
+			if (read.hasRead(readList, textId)) {
+				$textContent.append('<div class="readCheckbox readingCheckbox"/>');
+				$textContent.find('.unreadCheckbox').on('click', function() {});
+			} else {
+				$textContent.append('<div class="unreadCheckbox readingCheckbox"/>');
+				$textContent.find('.unreadCheckbox').on('click', function() {
+					readText($(this), textId);
+				});
+			}
+		}
 	});
 }
 
 function gotoPage(from, index) {
-	var direction = (index > from ? 'down' : 'up');	
+	var direction = (index < from ? 'down' : 'up');	
 	var name = '#p' + index;
 	if (index == 0) {
-		direction = 'up';
+		direction = 'down';
 		name = '#main';
 	}
     $.mobile.changePage(name, { transition: "slide" + direction });	
+}
+
+function readText($div, textId) {
+	read.add(textId);
+	$scoreDiv = $('div#scoreDiv');
+	if ($scoreDiv.size() == 0) {
+		$('body').append('<div id="scoreDiv" class="scoreAnimationBegin">+10</div>');
+		$scoreDiv = $('div#scoreDiv');
+	}
+	$
+	$div.removeClass('unreadCheckbox');
+	$div.addClass('readCheckbox');
 }
 
 $.event.special.swipe.handleSwipe = function(start, stop) {

@@ -8,9 +8,11 @@
         <title></title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
-        <script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
+        <link rel="stylesheet" href="./css/jquery.mobile-1.3.0.css" />
+        <link rel="stylesheet" href="./css/style.css" />
+        <link rel="stylesheet" href="./themes/change.min.css" />
+        <script src="./js/jquery-1.9.1.js"></script>
+        <script src="./js/jquery.mobile-1.3.0.js"></script>
         <script src="./js/swipe.js"></script>
         <script src="./js/storage.js"></script>
         <script src="./js/strengths.js"></script>
@@ -23,22 +25,24 @@
         </script>
     </head>
     <body>
-        <div data-role="page" id="main" data-down="#whenthen" data-up="#whenthen">
-            <div data-role="header"></div>
+        <div data-role="page" id="main" data-down="#p1" data-up="#p1">
+            <div data-role="header"><h1></h1></div>
             <div data-role="content">
                 <div class="about header" id="about-header"></div>
                 <div class="about" id="about"></div>
             </div>
         </div>
-        
-        <div data-role="page" id="whenthen" data-down="#main" data-up="#main">
-            <div data-role="header"></div>
-            <form action="">
-                <label for="when">Når jeg…</label>
-                <input type="text" id="when">
-                <label for="then">skal jeg…</label>
-                <input type="text" id="then">
-            </form>
+
+        <div data-role="page" id="p1" data-down="#main" data-up="#main">
+            <div data-role="header" data-theme="c"><h1></h1></div>
+            <div data-role="content">
+                <form action="">
+                    <label for="when">Når jeg…</label>
+                    <input type="text" id="when">
+                    <label for="then">skal jeg…</label>
+                    <input type="text" id="then">
+                </form>
+            </div>
         </div>
     </body>
 </html>

@@ -1,12 +1,22 @@
 var read = {
-	add: function(page) {
-
+	add: function(id) {
+		var list = read.list();
+		if (!read.hasRead(list, id)) {
+			list.push(id);
+			localStorage.setItem('readtextlist', JSON.stringify(list));
+		}
 	},
 	list: function() {
-
+		return JSON.parse(localStorage.getItem('readtextlist'));
 	},
-	hasRead: function(page) {
-
+	hasRead: function(list, id) {
+		var found = false;
+		for (var i = 0; i < list.length; i++) {
+			if (list[i] == id) {
+				found = true;
+			}
+		}
+		return found;		
 	}
 };
 
@@ -129,14 +139,13 @@ var storage = {
 
 
 function init_storage() {
-/*
 	if (JSON.parse(localStorage.getItem('visited')))
 		return;
-*/
 
 	localStorage.setItem('catlist', JSON.stringify([]));
 	localStorage.setItem('category', JSON.stringify({}));
 	localStorage.setItem('visited', JSON.stringify(true));
+	localStorage.setItem('readtextlist', JSON.stringify([]));
 
 	category.add('modig');
 	category.add('lære');
