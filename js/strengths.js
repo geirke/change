@@ -67,6 +67,7 @@ var strengths = {
         header: "Den modige våger å møte livet slik livet er.",
         about: "<p>Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.</p><br><p>Hvordan kan du utnytte denne styrken mer aktivt i hverdagen?</p> <p>- Tørre å foreslå noe som ikke er så populært, men som du har tro på.</p> <p>- Utfordre deg selv ved å gjøre noe du egentlig er litt redd for.</p>",
 
+        challenges: ["Gjør noe som utfordrer komfortsonen din", "Tørr å si ifra om du mener noe er urettferdig"],
         sliders: [
             {
                 text: "Familien",
@@ -86,6 +87,7 @@ var strengths = {
         name: "Liker å lære",
         header: "Læring er en positiv erfaring.",
         about: "<p>Liker å utvikle nye ferdigheter, og lære nye ting.</p><br><p>Hvordan kan du utnytte denne styrken mer aktivt i hverdagen din?</p><p>- Lese mer fagbøker? Velge TV-programmer og filmer du lærer noe nytt?</p> <p>- Melde deg på et kurs, eller sette deg inn i noe nytt på jobben?</p> ",
+        challenges: ["Meld deg på et kurs i noe du ikke kan", "Eksperimenter med matlaging, lær deg en ny oppskrift!", "Fordyp deg i et tema du er nysgjerring på"],
         sliders: [
             {
                 text: "Utdanning",
@@ -105,6 +107,7 @@ var strengths = {
         name: "Kreativitet",
         header: "Kreativitet er skapende evne eller virksomhet.",
         about: "<p>Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.</p><br><p>Hvordan kan du utnytte denne styrken mer akivt i hverdagen din?</p><p>- Melde deg på et kurs i maling, fotograpi, tegning, designe e.l.?</p><p>- Lage en ny matrett, ommøblere et rom, finne en ny vei hjem fra jobb?</p>",
+        challenges: ["Kom med nye ideer på arbeidsplassen", "Har du en ide, realiser den!", "Dyrk hobbyene dine"],
         sliders: [
             {
                 text: "Løgner",
@@ -173,6 +176,12 @@ var initstrengths = function() {
     cat = strengths[strength];
     main.find('#about-header').html(cat.header);
     main.find('#about').html(cat.about);
+    var $tips = $('#tips');
+    var tipsStr = "";
+    for (var i = 0; i < cat.challenges.length; i++) {
+        tipsStr += "<p>" + cat.challenges[i] + "</p>";
+    }
+    $tips.html(tipsStr);
 
     $('div[data-role="header"]').each(function() {
         $(this).find('h1').html(cat.name);
@@ -228,14 +237,14 @@ function fillText() {
         var whenthen = category.getWhenThen(categories[i]);
 
         for (var j = 0; j < strategies.length; ++j) {
-            $('#strat' + j + '-' + i).text(strategies[j])
+            $('#strat' + j + '-' + i).html(strategies[j])
         }
         
         if (whenthen.length > 0) {
-            $('#when-' + i).text(whenthen[whenthen.length - 1].when);
-            $('#then-' + i).text(whenthen[whenthen.length - 1].then);
+            $('#when-' + i).html(whenthen[whenthen.length - 1].when);
+            $('#then-' + i).html(whenthen[whenthen.length - 1].then);
         }
         
-        $('.strength-' + i).text(strength.name);
+        $('.strength-' + i).html(strength.name);
     }
 }
