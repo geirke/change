@@ -98,10 +98,12 @@ $.event.special.swipe.handleSwipe = function(start, stop) {
 
     if (Math.abs(dx) > Math.abs(dy)) { //rl move
 	if (dx > 0) {
-	    if(page.dataset["right"]) {
-		mustReload = true;
-		console.log(page.dataset["right"]);
-		$.mobile.changePage(page.dataset["right"], { reloadPage: true, transition: "slide" }); //right
+		var dset = page.dataset["right"];
+	    if(dset) {
+	    	console.log("BITTCHEESS");
+			mustReload = true;
+			console.log(page.dataset["right"]);
+			$.mobile.changePage(page.dataset["right"], { reloadPage: true, transition: "slide" }); //right
 	    }
 	} else {
 	    if(page.dataset["left"]) {
