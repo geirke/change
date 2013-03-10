@@ -18,6 +18,13 @@
     <script src="./js/jquery.mobile-1.3.0.js"></script>
     <script src="./js/storage.js"></script>
     <script src="./js/swipe.js"></script>
+    <script src="./js/strengths.js"></script>
+    <script>
+      $(function() {
+          fillText();
+          session.setCategory(strength);
+      });
+    </script>    
   </head>
   <body data-theme="b">
 
@@ -51,6 +58,7 @@
       </div><!-- /header -->
 
       <div data-role="content">
+        <!-- /content -->        
         <p>ting1</p>
         <p>ting2</p>
         <p>ting3 </p>
@@ -65,9 +73,10 @@
 
       <div data-role="content">
         <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+        <h2>Dine strategier</h2>
+        <p id="strat0-0"></p>
+        <p id="strat1-0"></p>
+        <p id="strat2-0"></p>
       </div><!-- /content -->
     </div><!-- /page -->
 
