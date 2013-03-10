@@ -3,11 +3,11 @@ var read = {
 		var list = read.list();
 		if (!read.hasRead(list, id)) {
 			list.push(id);
-			localStorage.setItem('readtextlist', JSON.stringify(list));
+			storage.setItem('readtextlist', list);
 		}
 	},
 	list: function() {
-		return JSON.parse(localStorage.getItem('readtextlist'));
+		return storage.getItem('readtextlist');
 	},
 	hasRead: function(list, id) {
 		var found = false;
@@ -27,7 +27,8 @@ var category = {
 		gories[category] = {
 			'points': 0,
 			'pages': [],
-			'whenthen': []
+			'whenthen': [],
+			'relation' : []
 		}
 
 		var list = storage.getCategoryList();
@@ -39,7 +40,7 @@ var category = {
 
 	get: function(category) {
 		if (category == null) {
-			category = session.category();
+			category = session.getCategory();
 		}
 
 		return storage.getCategory(category);
@@ -85,6 +86,44 @@ var category = {
 
 		category = storage.category(category);
 		return category['whenthen'];
+	},
+
+	addReleation: function(index, value, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		var gory = storage.category(category);
+		gory['relation'][index] = value;
+		storage.setCategory(category, gory);
+	},
+
+	getReleations: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.category(category);
+		return category['releation'];
+	},
+
+	addPage: function(page, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		var gory = storage.getCategory(category);
+		category['pages'].push(page);
+		storage.setCategory(category, gory);
+	},
+
+	pagesRead: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.getCategory(category);
+		return category['pages'];
 	}
 };
 
@@ -134,6 +173,14 @@ var storage = {
 
 	setCategoryList: function(list) {
 		localStorage.setItem('catlist', JSON.stringify(list));
+	},
+
+	getItem: function(key) {
+		return JSON.parse(localStorage.getItem(key));
+	},
+
+	setItem: function(key, value) {
+		localStorage.setItem(key, JSON.stringify(value));
 	}
 }
 
@@ -152,7 +199,4 @@ function init_storage() {
 	category.add('kreativitet');
 
 	session.setCategory('modig');
-
-	category.addPoints(5);
-	category.addWhenThen('Skal ut på tur', 'Aldri sur');
 }
