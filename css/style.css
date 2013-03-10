@@ -34,8 +34,8 @@ table td.tdRight {
 }
 
 .unreadCheckbox {
-	width: 62px;
-	height: 62px;
+	width: 43px;
+	height: 43px;
 	float: right;
 	margin-right: 1em;
 	background: url('../img/check.png');
@@ -43,9 +43,22 @@ table td.tdRight {
 }
 
 .readCheckbox {
-	width: 62px;
-	height: 62px;
+	width: 43px;
+	height: 43px;
 	float: right;
 	margin-right: 1em;
 	background: url('../img/check_green.png');	
+}
+
+div.scoreAnimationBegin {
+	position: absolute;
+	top: 50px;
+	right: 20px;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	color: #fff;
+	background: #017890;
+	font-size: 40px;
+	line-height: 80px;
 }

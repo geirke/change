@@ -29,19 +29,56 @@ var strengths = {
         about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
         sliders: [
             {
-                text: "Mot er viktig for familien"
+                text: "Mot er viktig for familien",
+                range: [1, 5]
+            },
+            {
+                text: "Mot er viktig for dama",
+                range: [1, 5]
+            },
+            {
+                text: "Mot er viktig i kamp mot drager",
+                range: [1, 5]
             }
         ]
     },
     'lære': {
         name: "Liker å lære",
         header: "Læring er en positiv erfaring.",
-        about: "Liker å utvikle nye ferdigheter, og lære nye ting."
+        about: "Liker å utvikle nye ferdigheter, og lære nye ting.",
+        sliders: [
+            {
+                text: "Læring er lurt i utdanning",
+                range: [1, 5]
+            },
+            {
+                text: "Det er viktig å lære på jobb",
+                range: [1, 5]
+            },
+            {
+                text: "Læring er viktig i kamp mot drager",
+                range: [1, 5]
+            }
+        ]
     },
     'kreativitet': {
         name: "Kreativitet",
         header: "Kreativitet er skapende evne eller virksomhet.",
-        about: "Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt."
+        about: "Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.",
+        sliders: [
+            {
+                text: "Kreativitet hjelper når du ljuger",
+                range: [1, 5]
+            },
+            {
+                text: "Kreativitet er bra når man lager apper",
+                range: [1, 5]
+            },
+            {
+                text: "Kreativitet er viktig i kamp mot drager",
+                range: [1, 5]
+            }
+        ]
     }
 };
 
@@ -50,13 +87,8 @@ var strength;
 
 /*
  * Finds the strength set in the current URL.
- * Currently no mapping between numbered strengths and named strengths.
  * 
- * This is an own function and not an on load event.
- * This way pages that require data about strengths,
- * but do not want to have their contents changed based on the strength.
- * 
- * TODO: Add mapping from numbers to named strengths based on local storage.
+ * Updates the html of several elements based on the strength.
  */
 var initstrengths = function() {
     strength = getURLParameter('strength');
@@ -93,23 +125,30 @@ var initstrengths = function() {
         }
     });
 
-    theme = 'ui-bar-' + String.fromCharCode(99 + strength);
+    theme = String.fromCharCode(99 + strength);
     strength = categoryList[strength];
     categoryData = category.get(strength);
-    
-    console.log(categoryData);
     
     strength = strengths[strength];
     console.log(strength);
     main.find('#about-header').html(strength.header);
     main.find('#about').html(strength.about);
 
-    $('div[data-role="header"] h1').each(function() {
-        $(this).html(strength.name);
+    $('div[data-role="header"]').each(function() {
+        $(this).find('h1').html(strength.name);
+        $(this)[0].dataset['theme'] = theme;
     });
     
-    $('.ui-bar-a').removeClass('ui-bar-a').addClass(theme);
+    $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
+    $('#whenthen').submit(function(event) {
+        console.log(event);
+    });
     
-    $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
-    $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
+    if (categoryData.whenthen.length !== 0) {
+        $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
+        $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
+    } else {
+        $('#when').val('');
+        $('#then').val('');
+    }
 };
