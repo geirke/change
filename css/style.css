@@ -62,3 +62,9 @@ div.scoreAnimationBegin {
 	font-size: 40px;
 	line-height: 80px;
 }
+
+.ui-title {
+	text-shadow: none !important;
+	font-size: 20pt !important;
+	font-weight: normal !important; 
+}
