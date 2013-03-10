@@ -26,7 +26,12 @@ var strengths = {
     'modig': {
         name: "Modig",
         header: "Den modige våger å møte livet slik livet er.",
-        about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand."
+        about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
+        sliders: [
+            {
+                text: "Mot er viktig for familien"
+            }
+        ]
     },
     'lære': {
         name: "Liker å lære",
@@ -88,6 +93,7 @@ var initstrengths = function() {
         }
     });
 
+    theme = 'ui-bar-' + String.fromCharCode(99 + strength);
     strength = categoryList[strength];
     categoryData = category.get(strength);
     
@@ -101,6 +107,8 @@ var initstrengths = function() {
     $('div[data-role="header"] h1').each(function() {
         $(this).html(strength.name);
     });
+    
+    $('.ui-bar-a').removeClass('ui-bar-a').addClass(theme);
     
     $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
     $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
