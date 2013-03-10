@@ -20,14 +20,16 @@ h2 {
 div.activeDot {
 	width: 16px;
 	height: 16px;
-	background: url('../img/black_dot.png');
+	background: #000;
+	border-radius: 50%;
 	margin: 10px auto;
 }
 
 div.greyDot {
 	width: 16px;
 	height: 16px;
-	background: url('../img/grey_dot.png');
+	background: #777;
+	border-radius: 50%;
 	margin: 10px auto;
 	cursor: pointer;
 }
@@ -75,6 +77,10 @@ table td.tdRight {
 
 .unreadCheckbox {
 	background: url('../img/check.png');
+	cursor: pointer;
+}
+
+.clickable {
 	cursor: pointer;
 }
 
