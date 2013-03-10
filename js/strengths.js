@@ -19,6 +19,45 @@ var getURLParameter = function(sParam) {
     }
 };
 
+var asyncFor = function(params) {
+    var defaults = {
+      total: 0,
+      limit: 100,
+      pause: 10,
+      context: this
+    },
+      options = $.extend(defaults, params),
+      def = $.Deferred(),
+      step = 0,
+      done = 0;
+ 
+    this.loop = function() {
+      if (done < options.total) {
+        step = 0;
+        for (; step < options.limit; step += 1, done += 1) {
+          def.notifyWith(options.context, [done]);
+        }
+        setTimeout.apply(this, [this.loop, options.pause]);
+      } else {
+        def.resolveWith(options.context);
+      }
+    };
+ 
+    setTimeout.apply(this, [this.loop, options.pause]);
+    return def;
+};
+
+/*
+asyncFor({
+  total: 10,
+  context: this
+}).progress(function(step) {
+  console.log(step);
+}).done(function() {
+  console.log('complete!')
+});
+*/
+
 /*
  * A dictionary of objects with data about strengths.
  */
@@ -179,3 +218,15 @@ var initstrengths = function() {
         }
     }
 };
+
+function fillText() {
+    var categories = category.list();
+
+    for (var i = 0; i < categories.length; ++i) {
+        var strategies = category.getStrategies(categories[i])
+
+        for (var j = 0; j < strategies.length; ++j) {
+            $('#strat' + j + '-' + i).text(strategies[j])
+        }
+    }
+}
