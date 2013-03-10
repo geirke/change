@@ -219,14 +219,8 @@ var initstrengths = function() {
         $('#then').val('');
     }
 
-    if (categoryData.strategies.length !== 0) {
-        $('#v1').val(categoryData.strategies[0]);
-        $('#v2').val(categoryData.strategies[0]);
-        $('#v3').val(categoryData.strategies[0]);
-    } else {
-        $('#v1').val('');
-        $('#v2').val('');
-        $('#v3').val('');
+    for (i = 0; i < categoryData.strategies.length; i++) {
+        $('#v' + (i + 1)).val(categoryData.strategies[i]);
     }
     
     $('.strength-name').html(cat.name);
