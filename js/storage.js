@@ -84,7 +84,7 @@ var category = {
 			category = session.getCategory();
 		}
 
-		category = storage.category(category);
+		category = storage.getCategory(category);
 		return category['whenthen'];
 	},
 
@@ -93,7 +93,7 @@ var category = {
 			category = session.getCategory();
 		}
 
-		var gory = storage.category(category);
+		var gory = storage.getCategory(category);
 		gory['relation'][index] = value;
 		storage.setCategory(category, gory);
 	},
@@ -103,7 +103,7 @@ var category = {
 			category = session.getCategory();
 		}
 
-		category = storage.category(category);
+		category = storage.getCategory(category);
 		return category['releation'];
 	},
 
