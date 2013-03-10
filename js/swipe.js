@@ -8,8 +8,8 @@ $(function() {
 
 function initPage() {
     if (mustReload) {
-	mustReload = false;
-	window.location.reload();
+		mustReload = false;
+		window.location.reload();
     }
     var $pages = $('div[data-role="page"]');
     $pages.on('swipe', function() {});
@@ -33,9 +33,6 @@ function initPage() {
 	    }
 	    dotStr += '</div></div>';
 	    $content.find('div#contentRight').append(dotStr);
-	    var $inner = $content.find('div.innerRightPanelAbs');
-	    var pos = ($(window).height() - $inner.height()) / 2;
-	    $inner.css('top', pos + 'px');
 	}
 	var $textContent = $this.find('div[data-text="true"]');
 	var textId = $this.attr('id');

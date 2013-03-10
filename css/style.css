@@ -48,6 +48,7 @@ table td.tdRight {
 
 .innerRightPanelAbs {
 	position: absolute;
+	top: 160px;
 }
 
 .readingCheckbox {
