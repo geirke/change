@@ -136,10 +136,7 @@ var strength;
 var initstrengths = function() {
     strength = getURLParameter('strength');
 
-    body = $('body');
-    body.detach();
-
-    main = $('div#main', body);
+    main = $('div#main');
 
     if (strength === undefined || isNaN(strength = parseInt(strength))) {
         strength = 0;
@@ -158,17 +155,17 @@ var initstrengths = function() {
         strength = categoryList.length - 1;
     }
 
-    $('[data-role="page"]', body).each(function() {
+    $('[data-role="page"]').each(function() {
         if (strength === 0) {
-            $(this, body)[0].dataset['left'] = 'profil.html';
+            $(this)[0].dataset['left'] = 'profil.html';
         } else {
-            $(this, body)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
+            $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
         }
 
         if (strength === categoryList.length - 1) {
-            $(this, body)[0].dataset['right'] = 'tekst.html';
+            $(this)[0].dataset['right'] = 'tekst.html';
         } else {
-            $(this, body)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
+            $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
         }
     });
 
@@ -181,27 +178,27 @@ var initstrengths = function() {
 
     main.find('#about-header').html(cat.header);
     main.find('#about').html(cat.about);
-    
-    var $tips = $('#tips', body);
+
+    var $tips = $('#tips');
     var tipsStr = "";
     for (var i = 0; i < cat.challenges.length; i++) {
         tipsStr += "<p>" + cat.challenges[i] + "</p>";
     }
-    $tips.html(tipsStr, body);
+    $tips.html(tipsStr);
 
-    $('div[data-role="header"]', body).each(function() {
+    $('div[data-role="header"]').each(function() {
         $(this).find('h1').html(cat.name);
         $(this)[0].dataset['theme'] = theme;
     });
     
-    $('.ui-bar-a', body).removeClass('ui-bar-a').addClass('ui-bar-' + theme);
+    $('.ui-bar-a').removeClass('ui-bar-a').addClass('ui-bar-' + theme);
 
-    $('#whenthen', body).submit(function() {
+    $('#whenthen').submit(function() {
         category.addWhenThen($('#when').val(), $('#then').val());
         return false;
     });
 
-    $('#wheni', body).submit(function() {
+    $('#wheni').submit(function() {
         category.addStrategy($('#v1').val());
         category.addStrategy($('#v2').val());
         category.addStrategy($('#v3').val());
@@ -209,24 +206,24 @@ var initstrengths = function() {
     });
     
     if (categoryData.whenthen.length !== 0) {
-        $('#when', body).val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
-        $('#then', body).val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
+        $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
+        $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
     } else {
-        $('#when', body).val('');
-        $('#then', body).val('');
+        $('#when').val('');
+        $('#then').val('');
     }
 
     if (categoryData.strategies.length !== 0) {
-        $('#v1', body).val(categoryData.strategies[0]);
-        $('#v2', body).val(categoryData.strategies[0]);
-        $('#v3', body).val(categoryData.strategies[0]);
+        $('#v1').val(categoryData.strategies[0]);
+        $('#v2').val(categoryData.strategies[0]);
+        $('#v3').val(categoryData.strategies[0]);
     } else {
-        $('#v1', body).val('');
-        $('#v2', body).val('');
-        $('#v3', body).val('');
+        $('#v1').val('');
+        $('#v2').val('');
+        $('#v3').val('');
     }
     
-    $('.strength-name', body).html(cat.name);
+    $('.strength-name').html(cat.name);
     
     console.log(categoryData);
     if (cat.sliders.length > 0) {
@@ -239,11 +236,9 @@ var initstrengths = function() {
             $('<label for="slider' + i + '">' + cat.sliders[i].text + '</label>'
               + '<input type="range" min="' + cat.sliders[i].range[0]
               + '" max="' + cat.sliders[i].range[1] + '" value="'
-              + value +'">', body).appendTo($('#sliders'));
+              + value +'">').appendTo($('#sliders'));
         }
     }
-
-    body.appendTo($('html'));
 };
 
 function fillText() {
