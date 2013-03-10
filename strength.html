@@ -47,6 +47,7 @@
                 <p>Det er ikke slik at «<span class="strength-name"></span>»
                     betyr det samme for deg som for andre.
                 </p>
+		<br>
                 <p><span class="strength-name"></span> med tanke på:</p>
                 
                 <form id="sliders">
@@ -57,6 +58,16 @@
         <div data-role="page" id="p2" data-down="#p3" data-up="#p1">
             <div data-role="header"><h1></h1></div>
             <div data-role="content">
+                <h2>Tips til hvordan du kan bruke styrken «<span class="strength-name"></span>»</h2>
+                <div id="tips">
+                </div>
+                <p>
+            </div>
+        </div>
+
+        <div data-role="page" id="p3" data-down="#p3" data-up="#p1">
+            <div data-role="header"><h1></h1></div>
+            <div data-role="content">
                 <h2>«Når jeg…, skal jeg…»</h2>
                 <p>
                     Forhåndsprogrammeringen går ut på å skape
@@ -64,21 +75,19 @@
                     og hva du skal gjøre i den situasjonen (skal jeg…).
                 </p>
                 <p>
-                    Formelen, «når jeg…, skal jeg…» er så enkel
-                    at du sannsynligvis tviler på at det kan ha noen effekt,
-                    men det har den.
+                    Lag en forhåndsprogrammering og gjenta setningen tre ganger høyt.
                 </p>
                 <form id="whenthen">
                     <label for="when">Når jeg…</label>
-                    <input type="text" id="when">
+                    <input type="text" id="when" placeholder="blir sulten">
                     <label for="then">skal jeg…</label>
-                    <input type="text" id="then">
+                    <input type="text" id="then" placeholder="skal jeg bare spise litt">
                     <input type="submit" style="display: none;" value="Legg til">
                 </form>
             </div>
         </div>
 
-        <div data-role="page" id="p3" data-down="#main" data-up="#p2">
+        <div data-role="page" id="p4" data-down="#main" data-up="#p2">
             <div data-role="header"><h1></h1></div>
             <div data-role="content">
                 <h2>Tenk igjennom...</h2>
@@ -87,10 +96,9 @@
                     Legg tre strategier for hvordan du kan bruke styrken "<span class="strength-name"></span>" mer i hverdagen din?
                 </p>
                 <form id="wheni">
-                    Tekstboks:         
-                    <input type="text" id="v1" />
-                    <input type="text" id="v2" />
-                    <input type="text" id="v3" />
+                    <input type="text" id="v1" placeholder="Jeg kan utfordre meg selv" />
+                    <input type="text" id="v2" placeholder="Jeg kan få igjennom mine ideer på arbeidsplassen" />
+                    <input type="text" id="v3" placeholder="Jeg kan tørre å stå for det jeg mener" />
                     <input type="submit" style="display: none;" value="Legg til">
                 </form>
             </div>            

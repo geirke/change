@@ -1,5 +1,4 @@
 
-
 body {
   font-family: Myriad Pro Regular, Helvetica, Arial Unicode MS, Arial, sans-serif !important;
 
@@ -9,6 +8,7 @@ h2 {
     margin-height: 100px;
     font-weight :normal;
     font-size: 125%;
+    min-height: 3em;
 
 }
 
@@ -80,6 +80,18 @@ table td.tdRight {
 	cursor: pointer;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
+.progressBorder {
+    height: 15px;
+}
+
+.innerProgress{
+    height: 13px !important;
+}
+
 .readCheckbox {
 	background: url('../img/check_green.png');	
 }
@@ -145,6 +157,10 @@ div.progressBorder {
     border-color: #303030 !important;
 }
 
+.ui-slider input {
+    display: none !important;
+}
+
 img.emblemImg {
-	width: 120px;
+	width: 80px;
 }

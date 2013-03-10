@@ -24,7 +24,7 @@
           fillText();
           session.setCategory(strength);
       });
-    </script>    
+    </script>
   </head>
   <body data-theme="b">
 
@@ -35,37 +35,30 @@
       </div><!-- /header -->
 
       <div data-role="content">
-        <h2>Karen</h2>
-        <p>Modig</p>
-        <div class="progressBorder">
-          <div id="progress1"></div>
+        <h2>Hei Karen</h2>
+	<p>Her ser du en oversikt over progresjon for dine signaturstyrker:</p>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=0', { reloadPage: true, transition: 'slide' });">
+          <p>Modig</p>
+          <div class="progressBorder">
+            <div class="innerProgress" id="progress1"></div>
+          </div>
         </div>
-        <p>Kreativ</p>
-        <div class="progressBorder">
-          <div id="progress2"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=1', { reloadPage: true, transition: 'slide' });">
+          <p>Liker å lære</p>
+          <div class="progressBorder">
+            <div class="innerProgress" id="progress2"></div>
+          </div>
         </div>
-        <p>Liker å lære</p>
-        <div class="progressBorder">
-          <div id="progress3"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=2', { reloadPage: true, transition: 'slide' });">
+          <p>Kreativitet</p>
+          <div class="progressBorder">
+            <div class="innerProgress" id="progress3"></div>
+          </div>
         </div>
       </div><!-- /content -->
     </div><!-- /page -->
 
-    <div data-role="page" class="page" id="p1" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#p2" data-up="#main">
-
-      <div data-role="header" data-theme="b">
-        <h1>Profil</h1>
-      </div><!-- /header -->
-
-      <div data-role="content">
-        <!-- /content -->        
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
-      </div><!-- /content -->
-    </div><!-- /page -->
-
-    <div data-role="page" class="page" id="p2" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#p3" data-up="#p1">
+    <div data-role="page" class="page" id="p1" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#p3" data-up="#p1">
 
       <div data-role="header" data-theme="b">
         <h1>Profil</h1>
@@ -73,28 +66,29 @@
 
       <div data-role="content">
         <!-- /content -->
-        <h2>Dine strategier for "<span class="strenght-0"></span>"</h2>
+        <h2>Dine strategier for «<span class="strength-0"></span>»</h2>
         <p id="strat0-0"></p>
         <p id="strat1-0"></p>
         <p id="strat2-0"></p>
       </div><!-- /content -->
     </div><!-- /page -->
 
-   <div data-role="page" class="page" id="p3" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#main" data-up="#p2">
+    <div data-role="page" class="page" id="p2" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#p2" data-up="#main">
 
       <div data-role="header" data-theme="b">
         <h1>Profil</h1>
       </div><!-- /header -->
 
       <div data-role="content">
-        <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+          <h2>Din forhåndsprogrammering for «<span class="strength-0"></span>»</h2>
+          <p id="whenthen-0">
+              Når jeg <span id="when-0">…</span>,
+              skal jeg <span id="then-0">…</span>.
+          </p>
       </div><!-- /content -->
     </div><!-- /page -->
 
-   <div data-role="page" class="page" id="p4" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#main" data-up="#p2">
+   <div data-role="page" class="page" id="p3" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#main" data-up="#p2">
 
       <div data-role="header" data-theme="b">
         <h6>Profil</h6>
@@ -102,11 +96,26 @@
 
       <div data-role="content">
         <!-- /content -->
-        <h2>Dine strategier for "<span class="strenght-1"></span>"</h2>
+        <h2>Dine strategier for «<span class="strength-1"></span>»</h2>
         <p id="strat0-1"></p>
         <p id="strat1-1"></p>
         <p id="strat2-1"></p>
       </div><!-- /content -->
+    </div><!-- /page -->
+
+   <div data-role="page" class="page" id="p4" data-left="tekst.html" data-right="strength.html?strength=0" data-down="#main" data-up="#p2">
+
+      <div data-role="header" data-theme="b">
+        <h1>Profil</h1>
+      </div><!-- /header -->
+
+      <div data-role="content">
+        <!-- /content -->
+        <h2>Din forhåndsprogrammering for «<span class="strength-1"></span>»</h2>
+          <p id="whenthen-1">
+              Når jeg <span id="when-1">…</span>,
+              skal jeg <span id="then-1">…</span>.
+          </p>
       </div><!-- /content -->
     </div><!-- /page -->
 
@@ -118,9 +127,10 @@
 
       <div data-role="content">
         <!-- /content -->
-        <p>ting1</p>
-        <p>ting2</p>
-        <p>ting3 </p>
+        <h2>Dine strategier for «<span class="strength-2"></span>»</h2>
+        <p id="strat0-2"></p>
+        <p id="strat1-2"></p>
+        <p id="strat2-2"></p>
       </div><!-- /content -->
     </div><!-- /page -->
 
@@ -132,10 +142,11 @@
 
       <div data-role="content">
         <!-- /content -->
-        <h2>Dine strategier for "<span class="strenght-2"></span>"</h2>
-        <p id="strat0-2"></p>
-        <p id="strat1-2"></p>
-        <p id="strat2-2"></p>
+        <h2>Din forhåndsprogrammering for «<span class="strength-2"></span>»</h2>
+          <p id="whenthen-2">
+              Når jeg <span id="when-2">…</span>,
+              skal jeg <span id="then-2">…</span>.
+          </p>
       </div><!-- /content -->
     </div><!-- /page -->
 
