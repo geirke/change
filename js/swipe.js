@@ -50,10 +50,10 @@ function initPage() {
 }
 
 function gotoPage(from, index) {
-	var direction = (index > from ? 'down' : 'up');	
+	var direction = (index < from ? 'down' : 'up');	
 	var name = '#p' + index;
 	if (index == 0) {
-		direction = 'up';
+		direction = 'down';
 		name = '#main';
 	}
     $.mobile.changePage(name, { transition: "slide" + direction });	
@@ -61,6 +61,12 @@ function gotoPage(from, index) {
 
 function readText($div, textId) {
 	read.add(textId);
+	$scoreDiv = $('div#scoreDiv');
+	if ($scoreDiv.size() == 0) {
+		$('body').append('<div id="scoreDiv" class="scoreAnimationBegin">+10</div>');
+		$scoreDiv = $('div#scoreDiv');
+	}
+	$
 	$div.removeClass('unreadCheckbox');
 	$div.addClass('readCheckbox');
 }
