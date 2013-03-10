@@ -181,12 +181,13 @@ var initstrengths = function() {
 
     main.find('#about-header').html(cat.header);
     main.find('#about').html(cat.about);
-    var $tips = $('#tips');
+    
+    var $tips = $('#tips', body);
     var tipsStr = "";
     for (var i = 0; i < cat.challenges.length; i++) {
         tipsStr += "<p>" + cat.challenges[i] + "</p>";
     }
-    $tips.html(tipsStr);
+    $tips.html(tipsStr, body);
 
     $('div[data-role="header"]', body).each(function() {
         $(this).find('h1').html(cat.name);
