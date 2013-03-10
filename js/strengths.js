@@ -60,22 +60,31 @@ var initstrengths = function() {
     if (strength !== undefined && !isNaN(strength = parseInt(strength))) {
         // Set strength to an object from the strengths dictionary.
         categoryList = category.list();
-        if (strength === 0) {
-            $('[data-role="page"]').each(function() {
-                $(this)[0].dataset['left'] = 'profil.html';
-                $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
-            });
-        } else if (strength >= categoryList.length - 1) {
-            $('[data-role="page"]').each(function() {
-                $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
-                $(this)[0].dataset['right'] = 'tekst.html';
-            });
-        } else {
-            $('[data-role="page"]').each(function() {
-                $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
-                $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
-            });
+        
+        if (categoryList.length === 0) {
+            mustReload = true;
+            $.mobile.changePage('profil.html', { transition: "slideleft" });
         }
+        
+        if (strength < 0) {
+            strength = 0;
+        } else if (strength >= categoryList.length) {
+            strength = categoryList.length - 1;
+        }
+        
+        $('[data-role="page"]').each(function() {
+            if (strength === 0) {
+                $(this)[0].dataset['left'] = 'profil.html';
+            } else {
+                $(this)[0].dataset['left'] = 'strength.html?strength=' + (strength - 1);
+            }
+            
+            if (strength === categoryList.length - 1) {
+                $(this)[0].dataset['right'] = 'tekst.html';
+            } else {
+                $(this)[0].dataset['right'] = 'strength.html?strength=' + (strength + 1);
+            }
+        });
         
         strength = strengths[categoryList[strength]];
         console.log(strength);
