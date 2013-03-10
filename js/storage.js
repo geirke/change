@@ -28,7 +28,8 @@ var category = {
 			'points': 0,
 			'pages': [],
 			'whenthen': [],
-			'relation' : []
+			'relation' : [],
+			'strategies' : []
 		}
 
 		var list = storage.getCategoryList();
@@ -124,6 +125,30 @@ var category = {
 
 		category = storage.getCategory(category);
 		return category['pages'];
+	},
+
+	addStrategy: function (strat, category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		var gory = storage.getCategory(category);
+		
+		if (gory['strategies'].length >= 3) {
+			gory['strategies'].pop();
+		}
+
+		gory['strategies'].push(strat);
+		storage.setCategory(category, gory);		
+	},
+
+	getStrategies: function(category) {
+		if (category == null) {
+			category = session.getCategory();
+		}
+
+		category = storage.getCategory(category);
+		return category['strategies'];
 	}
 };
 
