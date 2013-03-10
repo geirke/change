@@ -73,11 +73,11 @@ var strengths = {
                 range: [1, 10]
             },
             {
-                text: "Dama",
+                text: "Forsamlinger",
                 range: [1, 10]
             },
             {
-                text: "Kamp mot drager",
+                text: "Prøve noe nytt",
                 range: [1, 10]
             }
         ]

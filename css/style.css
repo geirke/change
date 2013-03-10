@@ -1,5 +1,4 @@
 
-
 body {
   font-family: Myriad Pro Regular, Helvetica, Arial Unicode MS, Arial, sans-serif !important;
 
@@ -9,6 +8,7 @@ h2 {
     margin-height: 100px;
     font-weight :normal;
     font-size: 125%;
+    min-height: 3em;
 
 }
 
@@ -147,6 +147,10 @@ div.progressBorder {
 .ui-slider-handle .ui-btn-inner {
     background: #202020 !important;
     border-color: #303030 !important;
+}
+
+.ui-slider input {
+    display: none !important;
 }
 
 img.emblemImg {
