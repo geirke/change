@@ -78,6 +78,10 @@ table td.tdRight {
 	cursor: pointer;
 }
 
+.clickable {
+	cursor: pointer;
+}
+
 .readCheckbox {
 	background: url('../img/check_green.png');	
 }

@@ -36,17 +36,23 @@
 
       <div data-role="content">
         <h2>Karen</h2>
-        <p>Modig</p>
-        <div class="progressBorder">
-          <div id="progress1"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=0', { reloadPage: true, transition: 'slide' });">
+          <p>Modig</p>
+          <div class="progressBorder">
+            <div id="progress1"></div>
+          </div>
         </div>
-        <p>Kreativ</p>
-        <div class="progressBorder">
-          <div id="progress2"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=1', { reloadPage: true, transition: 'slide' });">
+          <p>Liker å lære</p>
+          <div class="progressBorder">
+            <div id="progress2"></div>
+          </div>
         </div>
-        <p>Liker å lære</p>
-        <div class="progressBorder">
-          <div id="progress3"></div>
+        <div class="clickable" onClick="mustReload = true; $.mobile.changePage('strength.html?strength=2', { reloadPage: true, transition: 'slide' });">
+          <p>Kreativitet</p>
+          <div class="progressBorder">
+            <div id="progress3"></div>
+          </div>
         </div>
       </div><!-- /content -->
     </div><!-- /page -->
