@@ -143,7 +143,4 @@ function init_storage() {
 	category.add('kreativitet');
 
 	session.setCategory('modig');
-
-	category.addPoints(5);
-	category.addWhenThen('Skal ut på tur', 'Aldri sur');
 }
