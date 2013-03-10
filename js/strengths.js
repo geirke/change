@@ -88,7 +88,12 @@ var initstrengths = function() {
         }
     });
 
-    strength = strengths[categoryList[strength]];
+    strength = categoryList[strength];
+    categoryData = category.get(strength);
+    
+    console.log(categoryData);
+    
+    strength = strengths[strength];
     console.log(strength);
     main.find('#about-header').html(strength.header);
     main.find('#about').html(strength.about);
@@ -96,4 +101,7 @@ var initstrengths = function() {
     $('div[data-role="header"] h1').each(function() {
         $(this).html(strength.name);
     });
+    
+    $('#when').val(categoryData.whenthen[categoryData.whenthen.length - 1].when);
+    $('#then').val(categoryData.whenthen[categoryData.whenthen.length - 1].then);
 };
