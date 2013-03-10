@@ -253,14 +253,14 @@ function fillText() {
         var whenthen = category.getWhenThen(categories[i]);
 
         for (var j = 0; j < strategies.length; ++j) {
-            $('#strat' + j + '-' + i).text(strategies[j])
+            $('#strat' + j + '-' + i).html(strategies[j])
         }
         
         if (whenthen.length > 0) {
-            $('#when-' + i).text(whenthen[whenthen.length - 1].when);
-            $('#then-' + i).text(whenthen[whenthen.length - 1].then);
+            $('#when-' + i).html(whenthen[whenthen.length - 1].when);
+            $('#then-' + i).html(whenthen[whenthen.length - 1].then);
         }
         
-        $('.strength-' + i).text(strength.name);
+        $('.strength-' + i).html(strength.name);
     }
 }
