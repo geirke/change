@@ -2547,8 +2547,11 @@ input[type=number]::-webkit-outer-spin-button { margin: 0; }
 	clear: both;
 }
 /* Margin-top/bottom: .5em * 16px/14px to make it equal to ui-rangeslider-sliders margin (input font-size is 14px) */
+
 .ui-rangeslider input.ui-input-text.ui-slider-input {
 	margin: .57143em 0;
+
+	
 }
 .ui-rangeslider.ui-mini input.ui-slider-input {
 	margin: .28571em 0;

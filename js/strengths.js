@@ -73,11 +73,11 @@ var strengths = {
                 range: [1, 10]
             },
             {
-                text: "Dama",
+                text: "Forsamlinger",
                 range: [1, 10]
             },
             {
-                text: "Kamp mot drager",
+                text: "Prøve noe nytt",
                 range: [1, 10]
             }
         ]
@@ -232,10 +232,19 @@ function fillText() {
     var categories = category.list();
 
     for (var i = 0; i < categories.length; ++i) {
+        var strength = strengths[categories[i]];
         var strategies = category.getStrategies(categories[i])
+        var whenthen = category.getWhenThen(categories[i]);
 
         for (var j = 0; j < strategies.length; ++j) {
             $('#strat' + j + '-' + i).text(strategies[j])
         }
+        
+        if (whenthen.length > 0) {
+            $('#when-' + i).text(whenthen[whenthen.length - 1].when);
+            $('#then-' + i).text(whenthen[whenthen.length - 1].then);
+        }
+        
+        $('.strength-' + i).text(strength.name);
     }
 }
