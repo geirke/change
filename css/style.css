@@ -140,3 +140,7 @@ div.progressBorder {
     background: #202020 !important;
     border-color: #303030 !important;
 }
+
+img.emblemImg {
+	width: 120px;
+}
