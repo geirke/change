@@ -9,11 +9,13 @@ h2 {
     margin-height: 100px;
     font-weight :normal;
     font-size: 125%;
+    min-height: 3em;
 
 }
 
 [data-role="content"] {
     margin-left: 20px;
+    margin-right: 20px;
     padding-height: 40px;
 }
 
