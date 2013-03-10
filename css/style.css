@@ -5,6 +5,18 @@ body {
 
 }
 
+h2 {
+    margin-height: 100px;
+    font-weight :normal;
+    font-size: 125%;
+
+}
+
+[data-role="content"] {
+    margin-left: 20px;
+    padding-height: 40px;
+}
+
 div.activeDot {
 	width: 16px;
 	height: 16px;
@@ -39,20 +51,32 @@ table td.tdRight {
 .contentRight {
 }
 
-.unreadCheckbox {
+.rightPanelAbs {
+	position: fixed;
+	top: 0;
+	height: 100%;
+	width: 10%;
+}
+
+.innerRightPanelAbs {
+	position: absolute;
+	top: 160px;
+}
+
+.readingCheckbox {
 	width: 43px;
 	height: 43px;
-	float: right;
-	margin-right: 1em;
+	position: absolute;
+	bottom: 1em;
+	right: 1em;		
+}
+
+.unreadCheckbox {
 	background: url('../img/check.png');
 	cursor: pointer;
 }
 
 .readCheckbox {
-	width: 43px;
-	height: 43px;
-	float: right;
-	margin-right: 1em;
 	background: url('../img/check_green.png');	
 }
 
@@ -104,3 +128,15 @@ div.progressBorder {
 	border-radius: 5px;
 }
 .ui-submit { display: none;}
+
+.ui-slider-track {
+    height: 0.5em !important;
+    margin-top: 0.25em !important;
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
+
+.ui-slider-handle .ui-btn-inner {
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
