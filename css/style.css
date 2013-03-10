@@ -5,6 +5,18 @@ body {
 
 }
 
+h2 {
+    margin-height: 100px;
+    font-weight :normal;
+    font-size: 125%;
+
+}
+
+[data-role="content"] {
+    margin-left: 20px;
+    padding-height: 40px;
+}
+
 div.activeDot {
 	width: 16px;
 	height: 16px;
@@ -98,7 +110,7 @@ div#progress2 {
 
 .ui-title {
 	text-shadow: none !important;
-	font-size: 20pt !important;
+	font-size: 16pt !important;
 	font-weight: normal !important; 
 	text-transform: uppercase !important;	
 }
@@ -116,3 +128,15 @@ div.progressBorder {
 	border-radius: 5px;
 }
 .ui-submit { display: none;}
+
+.ui-slider-track {
+    height: 0.5em !important;
+    margin-top: 0.25em !important;
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
+
+.ui-slider-handle .ui-btn-inner {
+    background: #202020 !important;
+    border-color: #303030 !important;
+}
