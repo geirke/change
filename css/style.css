@@ -81,6 +81,13 @@ div#progress2 {
 	background: #009e68;
 }
 
+.ui-title {
+	text-shadow: none !important;
+	font-size: 20pt !important;
+	font-weight: normal !important; 
+	text-transform: uppercase !important;	
+}
+
 div#progress3 {
 	width: 10%;
 	height: 30px;
