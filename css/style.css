@@ -46,6 +46,7 @@ table td.tdRight {
 }
 
 .contentLeft {
+	width: 85%;
 	min-height: 100%;
 }
 
