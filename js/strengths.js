@@ -65,7 +65,8 @@ var strengths = {
     'modig': {
         name: "Modig",
         header: "Den modige våger å møte livet slik livet er.",
-        about: "Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.",
+        about: "<p>Å gjøre det man mener er rett, på tross av frykt, smerte og motstand.</p><br><p>Hvordan kan du utnytte denne styrken mer aktivt i hverdagen?</p> <p>- Tørre å foreslå noe som ikke er så populært, men som du har tro på.</p> <p>- Utfordre deg selv ved å gjøre noe du egentlig er litt redd for.</p>",
+
         challenges: ["Gjør noe som utfordrer komfortsonen din", "Tørr å si ifra om du mener noe er urettferdig"],
         sliders: [
             {
@@ -85,7 +86,7 @@ var strengths = {
     'lære': {
         name: "Liker å lære",
         header: "Læring er en positiv erfaring.",
-        about: "Liker å utvikle nye ferdigheter, og lære nye ting.",
+        about: "<p>Liker å utvikle nye ferdigheter, og lære nye ting.</p><br><p>Hvordan kan du utnytte denne styrken mer aktivt i hverdagen din?</p><p>- Lese mer fagbøker? Velge TV-programmer og filmer du lærer noe nytt?</p> <p>- Melde deg på et kurs, eller sette deg inn i noe nytt på jobben?</p> ",
         challenges: ["Meld deg på et kurs i noe du ikke kan", "Eksperimenter med matlaging, lær deg en ny oppskrift!", "Fordyp deg i et tema du er nysgjerring på"],
         sliders: [
             {
@@ -105,7 +106,7 @@ var strengths = {
     'kreativitet': {
         name: "Kreativitet",
         header: "Kreativitet er skapende evne eller virksomhet.",
-        about: "Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.",
+        about: "<p>Evne til å tenke nytt og finne på nye ting og løsninger. oppfinnsomhet, idérikdom og det å lage eller finne på noe nytt.</p><br><p>Hvordan kan du utnytte denne styrken mer akivt i hverdagen din?</p><p>- Melde deg på et kurs i maling, fotograpi, tegning, designe e.l.?</p><p>- Lage en ny matrett, ommøblere et rom, finne en ny vei hjem fra jobb?</p>",
         challenges: ["Kom med nye ideer på arbeidsplassen", "Har du en ide, realiser den!", "Dyrk hobbyene dine"],
         sliders: [
             {
