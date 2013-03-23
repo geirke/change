@@ -80,13 +80,19 @@ function readText($div, textId) {
 
 $.event.special.swipe.handleSwipe = function(start, stop) {
     originclasses = start.origin.attr('class');
-    if (originclasses && (originclasses.indexOf('ui-btn') !== -1
-                          || originclasses.indexOf('ui-slider') !== -1)) {
+    if (stop.time - start.time > $.event.special.swipe.durationThreshold ||
+            originclasses && (originclasses.indexOf('ui-btn') !== -1
+                              || originclasses.indexOf('ui-slider') !== -1)) {
         return false;
     }
     page = $.mobile.activePage[0];
     var dx = start.coords[0] - stop.coords[0];
     var dy = start.coords[1] - stop.coords[1];
+
+    if (Math.abs(dx) < $.event.special.swipe.horizontalDistanceThreshold
+            && Math.abs(dy) < $.event.special.swipe.horizontalDistanceThreshold) {
+        return false;
+    }
 
     if (Math.abs(dx) > Math.abs(dy)) { //rl move
 	if (dx > 0) {
