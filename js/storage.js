@@ -12,7 +12,7 @@ var read = {
     hasRead: function(list, id) {
         var found = false;
         for (var i = 0; i < list.length; i++) {
-            if (list[i] == id) {
+            if (list[i] === id) {
                 found = true;
             }
         }
@@ -30,7 +30,7 @@ var category = {
             'whenthen': [],
             'relation': [],
             'strategies': []
-        }
+        };
 
         var list = storage.getCategoryList();
         list.push(category);
@@ -40,7 +40,7 @@ var category = {
     },
             
     get: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -63,7 +63,7 @@ var category = {
     },
             
     getPoints: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -71,7 +71,7 @@ var category = {
     },
             
     addWhenThen: function(when, then, category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -81,7 +81,7 @@ var category = {
     },
             
     getWhenThen: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -90,7 +90,7 @@ var category = {
     },
             
     addReleation: function(index, value, category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -100,7 +100,7 @@ var category = {
     },
             
     getReleations: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -109,7 +109,7 @@ var category = {
     },
 
     addPage: function(page, category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -119,7 +119,7 @@ var category = {
     },
             
     pagesRead: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -127,7 +127,7 @@ var category = {
         return category['pages'];
     },
     addStrategy: function(strat, category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -135,12 +135,7 @@ var category = {
         var gory = storage.getCategory(category);
 
         if (gory['strategies'].length >= 3) {
-            // Overkill, but the loop allows
-            // extension of the number of strategies at a later date.
-            for (var i = 1; i < gory['strategies'].length; i++) {
-                gory['strategies'][i - 1] = gory['strategies'][i];
-            }
-            gory['strategies'].pop();
+            gory['strategies'].shift(); // Pop from start of array
         }
 
         gory['strategies'].push(strat);
@@ -149,7 +144,7 @@ var category = {
     },
             
     getStrategies: function(category) {
-        if (category == null) {
+        if (category === null) {
             category = session.getCategory();
         }
 
@@ -171,12 +166,12 @@ var session = {
     getPage: function() {
         return JSON.parse(sessionStorage.getItem('page'));
     }
-}
+};
 
 var storage = {
     // Category
     getCategory: function(category) {
-        if (category == null) {
+        if (category === null) {
             return JSON.parse(localStorage.getItem('category'));
         }
         return JSON.parse(localStorage.getItem('category'))[category];
@@ -206,7 +201,7 @@ var storage = {
     setItem: function(key, value) {
         localStorage.setItem(key, JSON.stringify(value));
     }
-}
+};
 
 
 function init_storage() {

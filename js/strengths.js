@@ -246,11 +246,11 @@ function fillText() {
 
     for (var i = 0; i < categories.length; ++i) {
         var strength = strengths[categories[i]];
-        var strategies = category.getStrategies(categories[i])
+        var strategies = category.getStrategies(categories[i]);
         var whenthen = category.getWhenThen(categories[i]);
 
         for (var j = 0; j < strategies.length; ++j) {
-            $('#strat' + j + '-' + i).html(strategies[j])
+            $('#strat' + j + '-' + i).html(strategies[j]);
         }
         
         if (whenthen.length > 0) {
